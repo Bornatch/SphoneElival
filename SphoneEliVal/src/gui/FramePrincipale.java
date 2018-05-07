@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class FramePrincipale extends JFrame {
+public abstract class FramePrincipale extends JFrame {
 
 	private JPanel panelNorth = new JPanel();
 	private JPanel panelSouth = new JPanel();
