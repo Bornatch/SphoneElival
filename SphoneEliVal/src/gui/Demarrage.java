@@ -8,6 +8,7 @@ public class Demarrage {
 		// TODO Auto-generated method stub
 		
 		JFrame test = new FrameAccueil() ;
+		System.out.println("test git");
 
 	}
 
