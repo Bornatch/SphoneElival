@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -35,7 +37,6 @@ public class FramePrincipale extends JFrame {
 		this.add(panelNorth, BorderLayout.NORTH);
 		panelNorth.setBackground(Color.BLACK);
 		panelNorth.setBounds(0, 0, 480, 40);
-		panelNorth.add(boutonExit);
 
 		this.add(panelEast, BorderLayout.EAST);
 		panelEast.setBackground(Color.BLACK);
@@ -48,21 +49,20 @@ public class FramePrincipale extends JFrame {
 		this.add(panelSouth, BorderLayout.SOUTH);
 		panelSouth.setBackground(Color.BLACK);
 		panelSouth.setBounds(0, 740, 480, 60);
-		panelSouth.add(boutonMenu);
 
 		// Ajout des boutons du Smartphones
-		// ExitButton bt = new ExitButton();
-		// this.add(bt);
 
-		// MenuButton mb = new MenuButton();
-		// this.add(mb);
+		boutonExit.addActionListener(new TraitementExit());
+		panelNorth.add(boutonExit);
+
+		boutonMenu.addActionListener(new TraitementMenu());
+		panelSouth.add(boutonMenu);
 
 		// fin de smartphone
 		this.setLayout(null);
 		this.setVisible(true);
 
 	}
-
 
 	// public JLabel getAfficheHeure() {
 	// return afficheHeure;
@@ -72,20 +72,30 @@ public class FramePrincipale extends JFrame {
 	// this.afficheHeure = afficheHeure;
 	// }
 
-	public JButton getBoutonMenu() {
-		return boutonMenu;
+	public class TraitementExit implements ActionListener {
+		/**
+		 * comportement de base du bouton exit posssibilité de donner le choix ( Exit,
+		 * Veille, Redémarrer) redémarrage avec Runtime.getRuntime().exec("java -jar
+		 * MonProg.jar");
+		 */
+		public void actionPerformed(ActionEvent e) {
+			System.exit(0);
+		}
 	}
 
-	public void setBoutonMenu(JButton boutonMenu) {
-		this.boutonMenu = boutonMenu;
-	}
+	public class TraitementMenu implements ActionListener {
+		/**
+		 * comportement du bouton menu, instancie une nouvelle frame acceuil et ferme la
+		 * fenêtre actuelle possibilité : rendre la calsse abstraite et ajouter si
+		 * besoin un confirmation de retour (pour sauvegarde ou autre )
+		 */
+		public void actionPerformed(ActionEvent e) {
 
-	public JButton getBoutonExit() {
-		return boutonExit;
-	}
+			JFrame accueil = new FrameAccueil();
+			accueil.setVisible(true);
 
-	public void setBoutonExit(JButton boutonExit) {
-		this.boutonExit = boutonExit;
+			dispose();
+		}
 	}
 
 	// public SimpleDateFormat getHeure() {
