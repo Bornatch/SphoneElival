@@ -50,13 +50,13 @@ public class FrameAccueil extends FramePrincipale {
 		settings.setBorderPainted(false);
 		
 		fondEcran.add(sons);
-		sons.setBounds(0, 160, 143, 100);
+		sons.setBounds(0, 200, 143, 100);
 		sons.setOpaque(true);
 		sons.setContentAreaFilled(false);
 		sons.setBorderPainted(false);
 
 		fondEcran.add(game);
-		game.setBounds(143, 160, 143, 100);
+		game.setBounds(143, 200, 143, 100);
 		game.setOpaque(true);
 		game.setContentAreaFilled(false);
 		game.setBorderPainted(false);

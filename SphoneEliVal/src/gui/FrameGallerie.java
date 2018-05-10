@@ -2,49 +2,64 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class FrameGallerie extends FramePrincipale {
-	
+
+	// création du panel
 	private JPanel panelCenter = new JPanel();
 
+	// objet dossier
 	private File dossier = new File("./Gallerie/");
-	private int index;
+	File[] fichier = dossier.listFiles();
+	int i ;
+
+	// liste de boutons adaptable selon nombre de photos
 	List<JButton> miniatures = new ArrayList<JButton>();
-	
-	File[] liste = dossier.listFiles();
 
 	public FrameGallerie() {
-		
-		// Créer une liste des images, le -1 retire le fichier thumbs
-		
-		
-		for (int i = 0; i < liste.length - 1; i++) {
-			 miniatures.add(new JButton(new ImageIcon(liste[i].getPath())));
-		
-			System.out.println(liste[i].getPath());
-	}
-		
-		
+
+		// ajout de panel de présentation des images
 
 		this.add(panelCenter, BorderLayout.CENTER);
 		panelCenter.setBackground(Color.DARK_GRAY);
-		panelCenter.setLayout(new GridLayout(liste.length/3,3,10,10));
+		panelCenter.setLayout(new GridLayout(fichier.length / 3, 3, 10, 10));
+		// panelCenter.setLayout(new GridBagLayout());
 		panelCenter.setBounds(20, 40, 440, 700);
 
-		for (int i = 0; i < miniatures.size(); i++) {
-			
+		// Créer une liste des Imagesicon, le -2 retire le fichier thumbs
+		for ( i = 0; i < fichier.length -2; i++) {
+			miniatures.add(new JButton(new ImageIcon(fichier[i].getPath())));
 			panelCenter.add(miniatures.get(i));
+			miniatures.get(i).addActionListener(new TraitementImage());
+			// System.out.println(liste[i].getPath());
 		}
 
+	}
+
+	public class TraitementImage implements ActionListener {
+		/**
+		 * comportement du bouton d'images,
+		 */
+		public void actionPerformed(ActionEvent e) {
+			
+			JFrame image = new FrameImage(((JButton)e.getSource()).getIcon());
+//			JFrame image = new FrameImage(fichier, i);
+//			System.out.println(i);
+//			image.setVisible(true);
+
+			dispose();
+		}
 	}
 
 }
