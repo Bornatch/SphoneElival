@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Scrollbar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -35,21 +37,21 @@ public class FrameGallerie extends FramePrincipale {
 
 		// ajout de panel de présentation des images
 
-		// this.add(panelCenter, BorderLayout.CENTER);
-		panelCenter.setBackground(Color.DARK_GRAY);
+		panelCenter.setBackground(Color.gray);
 		panelCenter.setLayout(new GridLayout(0, 3, 10, 10));
-		// panelCenter.setLayout(new FlowLayout());
-		// panelCenter.setLayout(new GridBagLayout());
-		panelCenter.setBounds(21, 105, 378, 610 );
+		panelCenter.setBounds(21, 105, 378, 610);
 
-		// Créer une liste des Imagesicon, le -2 retire le fichier thumbs
+		// Créer une liste des Imagesicon, le -1 retire le fichier thumbs
 		for (int i = 0; i < fichier.length - 1; i++) {
-			miniatures.add(new JButton(new ImageIcon(fichier[i].getPath())));
+
+			ImageIcon origine = new ImageIcon(fichier[i].getPath());
+			miniatures.add(new JButton(new ImageIcon(
+					origine.getImage().getScaledInstance(panelCenter.getWidth() / 3, 100, Image.SCALE_FAST))));
 			panelCenter.add(miniatures.get(i));
 			miniatures.get(i).setName("" + i);
 			miniatures.get(i).setPreferredSize(new Dimension(100, 100));
 			miniatures.get(i).addActionListener(new TraitementImage());
-			// System.out.println(liste[i].getPath());
+
 		}
 
 		JScrollPane scrollPane = new JScrollPane(panelCenter);
@@ -64,7 +66,6 @@ public class FrameGallerie extends FramePrincipale {
 		 */
 		public void actionPerformed(ActionEvent e) {
 
-			// JFrame image = new FrameImage(((JButton)e.getSource()).getIcon());
 			JFrame image = new FrameImage(fichier, Integer.parseInt(((JButton) e.getSource()).getName()));
 
 			image.setVisible(true);
@@ -74,3 +75,27 @@ public class FrameGallerie extends FramePrincipale {
 	}
 
 }
+
+/*
+ * //ImageIcon ajustee = ajuste(origine, extension); // découpage de l'extension
+ * du fichier String chemin = fichier[i].getPath(); int taille =
+ * chemin.length(); String extension = chemin.substring(taille - 3);
+ * System.out.println(extension);
+ * 
+ * private ImageIcon ajuste(ImageIcon imageIcon, String extension) { ImageIcon
+ * origine = imageIcon;
+ * 
+ * // getScaledinstance pas valable avec les gif if (extension.equals("gif"))
+ * return origine;
+ * 
+ * ImageIcon ajustee;
+ * 
+ * if (origine.getIconHeight() < 1000) { // test si format paysage ajustee = new
+ * ImageIcon(origine.getImage().getScaledInstance((origine.getIconWidth() * 100)
+ * / 1000, (origine.getIconWidth() * 100) / 1000, Image.SCALE_SMOOTH)); } else {
+ * ajustee = new
+ * ImageIcon(origine.getImage().getScaledInstance((origine.getIconWidth() ),
+ * (origine.getIconWidth()), 2)); }
+ * 
+ * return ajustee; }
+ */

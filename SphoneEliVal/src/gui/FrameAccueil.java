@@ -44,9 +44,10 @@ public class FrameAccueil extends FramePrincipale {
 		images.setContentAreaFilled(false);
 		images.setBorderPainted(false);
 		images.setText("Galerie");
-		images.setForeground(Color.BLACK);
+		//images.setForeground(Color.BLACK);
 		images.setVerticalTextPosition(SwingConstants.BOTTOM);
 		images.setHorizontalTextPosition(SwingConstants.CENTER);
+		
 		images.addActionListener(new TraitementGallerie());
 
 		fondEcran.add(contacts);
@@ -54,7 +55,7 @@ public class FrameAccueil extends FramePrincipale {
 		contacts.setContentAreaFilled(false);
 		contacts.setBorderPainted(false);
 		contacts.setText("Contacts");
-		contacts.setForeground(Color.BLACK);
+		//contacts.setForeground(Color.BLACK);
 		contacts.setVerticalTextPosition(SwingConstants.BOTTOM);
 		contacts.setHorizontalTextPosition(SwingConstants.CENTER);
 
@@ -63,16 +64,18 @@ public class FrameAccueil extends FramePrincipale {
 		settings.setContentAreaFilled(false);
 		settings.setBorderPainted(false);
 		settings.setText("Paramètres");
-		settings.setForeground(Color.BLACK);
+		//settings.setForeground(Color.BLACK);
 		settings.setVerticalTextPosition(SwingConstants.BOTTOM);
 		settings.setHorizontalTextPosition(SwingConstants.CENTER);
+		
+		settings.addActionListener(new TraitementSettings());
 
 		fondEcran.add(sons);
 		sons.setBounds(0, 200, fondEcran.getWidth()/3, 100);
 		sons.setContentAreaFilled(false);
 		sons.setBorderPainted(false);
 		sons.setText("Playlist");
-		sons.setForeground(Color.BLACK);
+		//sons.setForeground(Color.BLACK);
 		sons.setVerticalTextPosition(SwingConstants.BOTTOM);
 		sons.setHorizontalTextPosition(SwingConstants.CENTER);
 
@@ -81,7 +84,7 @@ public class FrameAccueil extends FramePrincipale {
 		game.setContentAreaFilled(false);
 		game.setBorderPainted(false);
 		game.setText("Game");
-		game.setForeground(Color.BLACK);
+		//game.setForeground(Color.BLACK);
 		game.setVerticalTextPosition(SwingConstants.BOTTOM);
 		game.setHorizontalTextPosition(SwingConstants.CENTER);
 
@@ -95,6 +98,19 @@ public class FrameAccueil extends FramePrincipale {
 
 			JFrame gallerie = new FrameGallerie();
 			gallerie.setVisible(true);
+
+			dispose();
+		}
+	}
+	
+	public class TraitementSettings implements ActionListener {
+		/**
+		 * comportement du bouton gallerie,
+		 */
+		public void actionPerformed(ActionEvent e) {
+
+			JFrame parametres = new FrameSettings();
+			parametres.setVisible(true);
 
 			dispose();
 		}

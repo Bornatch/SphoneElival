@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -15,10 +16,10 @@ import javax.swing.JPanel;
 
 public class FrameImage extends FramePrincipale {
 
-	// panel d'affichage des images
+	// label d'affichage des images
 	private JLabel imageSelect;
 
-	Icon image;
+	ImageIcon photo;
 	File[] fichier;
 
 	int index;
@@ -32,11 +33,19 @@ public class FrameImage extends FramePrincipale {
 	public FrameImage(File[] fichier, int index) {
 		this.fichier = fichier;
 		this.index = index;
-		this.image = new ImageIcon(fichier[index].getPath());
-		// this.image = ajuste(new ImageIcon(fichier[index].getPath()));
-		// test System.out.println(fichier[index].getPath());
 
-		imageSelect = new JLabel(image);
+		// découpage de l'extension du fichier
+		String chemin = fichier[index].getPath();
+		int taille = chemin.length();
+		String extension = chemin.substring(taille - 3);
+		System.out.println(extension);
+
+		this.photo = new ImageIcon(fichier[index].getPath());
+		//this.image = ajuste(new ImageIcon(chemin), extension);
+		// test 
+		System.out.println(fichier[index].getPath());
+
+		imageSelect = new JLabel(new ImageIcon(photo.getImage().getScaledInstance(largeur,hauteur, Image.SCALE_SMOOTH)));
 
 		// panel d'affichage des images sur partie haute
 		this.add(imageSelect, BorderLayout.CENTER);
@@ -70,10 +79,28 @@ public class FrameImage extends FramePrincipale {
 
 	}
 
-	private Icon ajuste(ImageIcon imageIcon) {
+	private Icon ajuste(ImageIcon imageIcon, String extension) {
 		ImageIcon origine = imageIcon;
 
-		return null;
+		// getScaledinstance pas valable avec les gif
+		if (extension.equals("gif"))
+			return origine;
+
+		int ratio;
+
+		if (origine.getIconHeight() < origine.getIconWidth()) { // test si format paysage
+			ratio = ((origine.getIconWidth()* 100 / largeur) );
+			System.out.println("ratio : " + ratio + "\nHauteur : " + origine.getIconHeight());
+			System.out.println("largeur : " + origine.getIconWidth() + "\nDescr : " + origine.getDescription());
+			System.out.println("statut de charge : " + origine.getImageLoadStatus());
+			System.out.println("hauteur label : " + hauteur + "\nlargeur label  : " + largeur);
+		} else
+			ratio = origine.getIconHeight()* 100 / hauteur ;
+
+		ImageIcon ajustee = new ImageIcon(origine.getImage().getScaledInstance((origine.getIconWidth() * 100) / (ratio),
+				(origine.getIconWidth() * 100) / (ratio), Image.SCALE_SMOOTH));
+
+		return ajustee;
 	}
 
 	public class TraitementNext implements ActionListener {
