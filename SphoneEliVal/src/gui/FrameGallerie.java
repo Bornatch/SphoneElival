@@ -40,7 +40,7 @@ public class FrameGallerie extends FramePrincipale {
 		panelCenter.setLayout(new GridLayout(0, 3, 10, 10));
 		// panelCenter.setLayout(new FlowLayout());
 		// panelCenter.setLayout(new GridBagLayout());
-		panelCenter.setBounds(20, 40, 440, fichier.length / 3 * 100);
+		panelCenter.setBounds(21, 105, 378, 610 );
 
 		// Créer une liste des Imagesicon, le -2 retire le fichier thumbs
 		for (int i = 0; i < fichier.length - 1; i++) {
@@ -54,7 +54,7 @@ public class FrameGallerie extends FramePrincipale {
 
 		JScrollPane scrollPane = new JScrollPane(panelCenter);
 		this.add(scrollPane, BorderLayout.CENTER);
-		scrollPane.setBounds(20, 40, 440, 700);
+		scrollPane.setBounds(21, 105, 378, 610);
 
 	}
 

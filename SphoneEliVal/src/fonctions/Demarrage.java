@@ -1,6 +1,8 @@
-package gui;
+package fonctions;
 
 import javax.swing.JFrame;
+
+import gui.FrameAccueil;
 
 public class Demarrage {
 
@@ -8,7 +10,7 @@ public class Demarrage {
 		// TODO Auto-generated method stub
 		
 		JFrame test = new FrameAccueil() ;
-		System.out.println("test git");
+		//System.out.println("test git");
 
 	}
 
