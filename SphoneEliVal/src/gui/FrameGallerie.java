@@ -3,23 +3,21 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Scrollbar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+@SuppressWarnings("serial")
 public class FrameGallerie extends FramePrincipale {
 
 	// création du panel
@@ -41,6 +39,10 @@ public class FrameGallerie extends FramePrincipale {
 		panelCenter.setLayout(new GridLayout(0, 3, 10, 10));
 		panelCenter.setBounds(21, 105, 378, 610);
 
+		JScrollPane scrollPane = new JScrollPane(panelCenter);
+		this.add(scrollPane, BorderLayout.CENTER);
+		scrollPane.setBounds(21, 105, 378, 610);
+
 		// Créer une liste des Imagesicon, le -1 retire le fichier thumbs
 		for (int i = 0; i < fichier.length - 1; i++) {
 
@@ -53,10 +55,6 @@ public class FrameGallerie extends FramePrincipale {
 			miniatures.get(i).addActionListener(new TraitementImage());
 
 		}
-
-		JScrollPane scrollPane = new JScrollPane(panelCenter);
-		this.add(scrollPane, BorderLayout.CENTER);
-		scrollPane.setBounds(21, 105, 378, 610);
 
 	}
 

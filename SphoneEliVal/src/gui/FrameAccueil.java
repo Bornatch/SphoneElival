@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+@SuppressWarnings("serial")
 public class FrameAccueil extends FramePrincipale {
 
 	// choix d'image pour le fond d'écran (panelCenter)
@@ -39,6 +39,8 @@ public class FrameAccueil extends FramePrincipale {
 		 * bouton.setVerticalTextPosition(SwingConstants.BOTTOM) et bouton.setHorizontalTextPosition(SwingConstants.CENTER); // position du texte
 		 * bouton.addActionListener(new TraitementGallerie()); // si existant : lancement de l'application
 		 */
+		
+		//galerie
 		fondEcran.add(images);
 		images.setBounds(0, 60, fondEcran.getWidth()/3, 100);
 		images.setContentAreaFilled(false);
@@ -49,7 +51,8 @@ public class FrameAccueil extends FramePrincipale {
 		images.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		images.addActionListener(new TraitementGallerie());
-
+		
+		//contacts
 		fondEcran.add(contacts);
 		contacts.setBounds(fondEcran.getWidth()/3, 60, fondEcran.getWidth()/3, 100);
 		contacts.setContentAreaFilled(false);
@@ -58,7 +61,10 @@ public class FrameAccueil extends FramePrincipale {
 		//contacts.setForeground(Color.BLACK);
 		contacts.setVerticalTextPosition(SwingConstants.BOTTOM);
 		contacts.setHorizontalTextPosition(SwingConstants.CENTER);
-
+		
+		contacts.addActionListener(new TraitementContactsList());
+		
+		//paramètres
 		fondEcran.add(settings);
 		settings.setBounds(fondEcran.getWidth()/3*2, 60, fondEcran.getWidth()/3, 100);
 		settings.setContentAreaFilled(false);
@@ -69,6 +75,7 @@ public class FrameAccueil extends FramePrincipale {
 		settings.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		settings.addActionListener(new TraitementSettings());
+		
 
 		fondEcran.add(sons);
 		sons.setBounds(0, 200, fondEcran.getWidth()/3, 100);
@@ -87,7 +94,21 @@ public class FrameAccueil extends FramePrincipale {
 		//game.setForeground(Color.BLACK);
 		game.setVerticalTextPosition(SwingConstants.BOTTOM);
 		game.setHorizontalTextPosition(SwingConstants.CENTER);
+		game.addActionListener(new TraitementGame());
 
+	}
+	
+	public class TraitementContactsList implements ActionListener {
+		/**
+		 * comportement du bouton gallerie,
+		 */
+		public void actionPerformed(ActionEvent e) {
+
+			JFrame contacts = new FrameContacts();
+			contacts.setVisible(true);
+
+			dispose();
+		}
 	}
 
 	public class TraitementGallerie implements ActionListener {
@@ -111,6 +132,18 @@ public class FrameAccueil extends FramePrincipale {
 
 			JFrame parametres = new FrameSettings();
 			parametres.setVisible(true);
+
+			dispose();
+		}
+	}
+	public class TraitementGame implements ActionListener {
+		/**
+		 * comportement du bouton gallerie,
+		 */
+		public void actionPerformed(ActionEvent e) {
+
+			JFrame demineur = new FrameDemineur();
+			demineur.setVisible(true);
 
 			dispose();
 		}

@@ -18,6 +18,7 @@ import javax.swing.JPanel;
  * Architecture principale du projet, mère de toute les frames appelées.
  */
 
+@SuppressWarnings("serial")
 public abstract class FramePrincipale extends JFrame {
 
 	// Création des panels
@@ -28,7 +29,7 @@ public abstract class FramePrincipale extends JFrame {
 	private JPanel panelWest = new JPanel();
 
 	// couleur du smartphone
-	private Color bord = Color.BLACK;
+	private Color bord = Color.black ;
 
 	// création des boutons
 
@@ -56,6 +57,8 @@ public abstract class FramePrincipale extends JFrame {
 		this.setUndecorated(true);
 		this.setLayout(null);
 		this.setVisible(true);
+		
+		
 
 		// Ajout de des panels
 
@@ -128,6 +131,14 @@ public abstract class FramePrincipale extends JFrame {
 		
 		
 
+	}
+
+	public Color getBord() {
+		return bord;
+	}
+
+	public void setBord(Color bord) {
+		this.bord = bord;
 	}
 
 	public class TraitementExit implements ActionListener {

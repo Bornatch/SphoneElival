@@ -12,8 +12,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class FrameImage extends FramePrincipale {
 
 	// label d'affichage des images
@@ -79,6 +79,7 @@ public class FrameImage extends FramePrincipale {
 
 	}
 
+	@SuppressWarnings("unused")
 	private Icon ajuste(ImageIcon imageIcon, String extension) {
 		ImageIcon origine = imageIcon;
 
