@@ -33,25 +33,31 @@ public class FrameGallerie extends FramePrincipale {
 
 	public FrameGallerie() {
 
-		// ajout de panel de présentation des images
+		// ajout du panel de présentation des images
 
 		panelCenter.setBackground(Color.gray);
 		panelCenter.setLayout(new GridLayout(0, 3, 10, 10));
 		panelCenter.setBounds(21, 105, 378, 610);
 
+		// mise du panel dans un scrollpane 
 		JScrollPane scrollPane = new JScrollPane(panelCenter);
 		this.add(scrollPane, BorderLayout.CENTER);
 		scrollPane.setBounds(21, 105, 378, 610);
 
 		// Créer une liste des Imagesicon, le -1 retire le fichier thumbs
 		for (int i = 0; i < fichier.length - 1; i++) {
-
+			
+			//redimmensionnement de l'image
 			ImageIcon origine = new ImageIcon(fichier[i].getPath());
 			miniatures.add(new JButton(new ImageIcon(
 					origine.getImage().getScaledInstance(panelCenter.getWidth() / 3, 100, Image.SCALE_FAST))));
-			panelCenter.add(miniatures.get(i));
-			miniatures.get(i).setName("" + i);
+			
+			//ajout de chaque miniature
+			panelCenter.add(miniatures.get(i));			
 			miniatures.get(i).setPreferredSize(new Dimension(100, 100));
+			
+			//Ajout du numéro d'index pour gestion des events
+			miniatures.get(i).setName("" + i);
 			miniatures.get(i).addActionListener(new TraitementImage());
 
 		}

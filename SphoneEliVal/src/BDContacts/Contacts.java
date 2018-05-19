@@ -53,16 +53,18 @@ public class Contacts implements Serializable {
 	}
 
 	public void AddContact(Contacts c) {
-		// Contacts c=new Contacts (); //on doit appeller le constructeur String
-		// Nom,String Prenom,String numNatel,String numProfessionel,String Email
-
-		String clé = creerCle(c);
-		if (listecontacts.get(clé) == null) {
-			listecontacts.put(clé, c);
-
-			// System.out.println(listecontacts.get(clé)+" existe dejà");
-		} else
-			modifierContact();
+//		// Contacts c=new Contacts (); //on doit appeller le constructeur String
+//		// Nom,String Prenom,String numNatel,String numProfessionel,String Email
+//
+//		String clé = creerCle(c);
+//		if (listecontacts.get(clé) == null) {
+//			listecontacts.put(clé, c);
+//
+//			// System.out.println(listecontacts.get(clé)+" existe dejà");
+//		} else
+//			modifierContact();
+		
+		
 
 	}
 

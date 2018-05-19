@@ -38,14 +38,14 @@ public class FrameImage extends FramePrincipale {
 		String chemin = fichier[index].getPath();
 		int taille = chemin.length();
 		String extension = chemin.substring(taille - 3);
-		System.out.println(extension);
+		//System.out.println(extension);
 
 		this.photo = new ImageIcon(fichier[index].getPath());
 		//this.image = ajuste(new ImageIcon(chemin), extension);
-		// test 
-		System.out.println(fichier[index].getPath());
+		// test 		System.out.println(fichier[index].getPath());
 
-		imageSelect = new JLabel(new ImageIcon(photo.getImage().getScaledInstance(largeur,hauteur, Image.SCALE_SMOOTH)));
+		//redimensionnement avec scale_FAST, SCALE_Smooth impossible avec .gif...
+		imageSelect = new JLabel(new ImageIcon(photo.getImage().getScaledInstance(largeur,hauteur, Image.SCALE_FAST)));
 
 		// panel d'affichage des images sur partie haute
 		this.add(imageSelect, BorderLayout.CENTER);
