@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -25,12 +27,11 @@ public class FrameSettings extends FramePrincipale {
 	private Color[] colorList = { Color.BLACK, Color.blue, Color.CYAN, Color.DARK_GRAY, Color.LIGHT_GRAY, Color.GREEN,
 			Color.WHITE, Color.YELLOW };
 	private JComboBox<Color> couleurs = new JComboBox<Color>(colorList);
-	
-	
+
 	// Déclaration des polices
-			Font titre = new Font("helvetica", Font.BOLD, 25);
-			Font ssTitre = new Font("helvetica", Font.BOLD, 15);
-			Font texte = new Font("helvetica", Font.BOLD, 12);
+	Font titre = new Font("helvetica", Font.BOLD, 25);
+	Font ssTitre = new Font("helvetica", Font.BOLD, 15);
+	Font texte = new Font("helvetica", Font.BOLD, 12);
 
 	@SuppressWarnings("unchecked")
 	public FrameSettings() {
@@ -40,8 +41,6 @@ public class FrameSettings extends FramePrincipale {
 		// panelCenter.setBackground(Color.gray);
 		panelCenter.setLayout(null);
 		panelCenter.setBounds(21, 105, 378, 609);
-
-		
 
 		// ajout du titre
 
@@ -59,32 +58,41 @@ public class FrameSettings extends FramePrincipale {
 		couleurs.setRenderer(new ColorComboRenderer());
 		couleurs.addActionListener(new TraitementCouleur());
 		couleurs.setBounds(180, 60, 198, 30);
+		//couleurs.addItemListener(new ItemState());
 
 	}
+	
+//	class ItemState implements ItemListener{
+//
+//	    public void itemStateChanged(ItemEvent e) {
+//
+//	      System.out.println("événement déclenché sur : " + e.getItem());
+//	      
+//	      setBord(Color.BLUE);
+//
+//	    }               
+//
+//	  }
 
 	public class TraitementCouleur implements ActionListener {
 
 		/**
-		 * comportement de la combobox couleurs
-		 * actuellement change le background du panel ...
+		 * comportement de la combobox couleurs actuellement change le background du
+		 * panel ...
 		 */
 		@SuppressWarnings("rawtypes")
 		public void actionPerformed(ActionEvent e) {
-			
-			JComboBox cb = (JComboBox)e.getSource();
-		     
-            // Get the new item
-            Object newItem = cb.getSelectedItem();
-     
 
-     
-            if ("comboBoxEdited".equals(e.getActionCommand())) {
-                panelCenter.setBackground((Color)newItem);
-            } else if ("comboBoxChanged".equals(e.getActionCommand())) {
-            	 panelCenter.setBackground((Color)newItem);
-            }
-			
-			
+			JComboBox cb = (JComboBox) e.getSource();
+
+			// Get the new item
+			Object newItem = cb.getSelectedItem();
+
+			if ("comboBoxEdited".equals(e.getActionCommand())) {
+				panelCenter.setBackground((Color) newItem);
+			} else if ("comboBoxChanged".equals(e.getActionCommand())) {
+				panelCenter.setBackground((Color) newItem);
+			}
 
 		}
 

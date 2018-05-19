@@ -3,6 +3,7 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -104,8 +105,15 @@ public class FrameAccueil extends FramePrincipale {
 		 */
 		public void actionPerformed(ActionEvent e) {
 
-			JFrame contacts = new FrameContacts();
-			contacts.setVisible(true);
+			JFrame contacts;
+			try {
+				contacts = new FrameContacts();
+				contacts.setVisible(true);
+			} catch (IOException e1) {
+				
+				e1.printStackTrace();
+			}
+			
 
 			dispose();
 		}
