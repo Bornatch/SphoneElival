@@ -29,7 +29,7 @@ public abstract class FramePrincipale extends JFrame {
 	private JPanel panelWest = new JPanel();
 
 	// couleur du smartphone
-	private Color bord = Color.black ;
+	private Color bord = Color.white ;
 
 	// création des boutons
 
