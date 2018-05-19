@@ -94,7 +94,7 @@ public class FrameAccueil extends FramePrincipale {
 		//game.setForeground(Color.BLACK);
 		game.setVerticalTextPosition(SwingConstants.BOTTOM);
 		game.setHorizontalTextPosition(SwingConstants.CENTER);
-		game.addActionListener(new TraitementGame());
+		//game.addActionListener(new TraitementGame());
 
 	}
 	
@@ -136,17 +136,17 @@ public class FrameAccueil extends FramePrincipale {
 			dispose();
 		}
 	}
-	public class TraitementGame implements ActionListener {
-		/**
-		 * comportement du bouton gallerie,
-		 */
-		public void actionPerformed(ActionEvent e) {
-
-			JFrame demineur = new FrameDemineur();
-			demineur.setVisible(true);
-
-			dispose();
-		}
-	}
+//	public class TraitementGame implements ActionListener {
+//		/**
+//		 * comportement du bouton gallerie,
+//		 */
+//		public void actionPerformed(ActionEvent e) {
+//
+//			JFrame demineur = new FrameDemineur();
+//			demineur.setVisible(true);
+//
+//			dispose();
+//		}
+//	}
 
 }
