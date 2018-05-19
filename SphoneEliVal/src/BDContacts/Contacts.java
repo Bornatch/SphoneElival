@@ -75,7 +75,7 @@ public class Contacts implements Serializable {
 		// le fich va être crée
 		// chemin à controler
 		FileOutputStream fichier = new FileOutputStream(
-				"/Users/elizabeth/git/Projet_2018/SphoneEliVal/src/BDContacts/ListContacts/contacts.ser");
+				"./DataContact/"+c.Nom+c.Prenom+".ser");
 
 		BufferedOutputStream bfichier = new BufferedOutputStream(fichier);
 
