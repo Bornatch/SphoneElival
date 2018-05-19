@@ -29,6 +29,7 @@ public class Contacts implements Serializable {
 		Email = email;
 
 		listecontacts = new HashMap<String, Contacts>();
+		
 	}
 
 	public String creerCle(Contacts c) { // Meth qui cree une clé pour la gestion de contacts en mayuscules.
@@ -70,7 +71,7 @@ public class Contacts implements Serializable {
 	 * Meth pour enregistrer un objet dans un fichier
 	 *
 	 */
-	private static void serializeObject(Contacts c) throws IOException {
+	public static void serializeObject(Contacts c) throws IOException {
 		// ouvrir un lien vers le fichier
 		// le fich va être crée
 		// chemin à controler
