@@ -5,14 +5,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import fonctions.ColorComboRenderer;
+import fonctions.ColorManager;
 
 @SuppressWarnings("serial")
 public class FrameSettings extends FramePrincipale {
@@ -20,13 +21,17 @@ public class FrameSettings extends FramePrincipale {
 	// création du panel
 	private JPanel panelCenter = new JPanel();
 
-	// Contenu du panel
+	// Les Labels de texte
 	private JLabel general = new JLabel("Général");
-	private JLabel smartphoneColor = new JLabel("Couleur du smartphone");
+	private JLabel smartphoneColor = new JLabel("<html>Couleur du <br> smartphone<html>");
 
+	//la combobox de choix de couleurs
 	private Color[] colorList = { Color.BLACK, Color.blue, Color.CYAN, Color.DARK_GRAY, Color.LIGHT_GRAY, Color.GREEN,
 			Color.WHITE, Color.YELLOW };
 	private JComboBox<Color> couleurs = new JComboBox<Color>(colorList);
+
+	//bouton de validation
+	private JButton valide = new JButton("Valider");
 
 	// Déclaration des polices
 	Font titre = new Font("helvetica", Font.BOLD, 25);
@@ -47,32 +52,28 @@ public class FrameSettings extends FramePrincipale {
 		panelCenter.add(general);
 		general.setFont(titre);
 		general.setBackground(Color.DARK_GRAY);
-		general.setBounds(0, 20, 378, 40);
+		general.setBounds(20, 20, 378, 40);
 
+		// Ajout du label de choix
 		panelCenter.add(smartphoneColor);
 		smartphoneColor.setFont(ssTitre);
-		smartphoneColor.setBounds(0, 60, 180, 30);
+		smartphoneColor.setBounds(20, 70, 180, 50);
 
+		// Ajout du combobox des couleurs
 		panelCenter.add(couleurs);
 		couleurs.setFont(texte);
 		couleurs.setRenderer(new ColorComboRenderer());
 		couleurs.addActionListener(new TraitementCouleur());
-		couleurs.setBounds(180, 60, 198, 30);
-		//couleurs.addItemListener(new ItemState());
+		couleurs.setBounds(180, 70, 178, 50);
+
+		// Ajout du bouton de validation
+		panelCenter.add(valide);
+		valide.setFont(texte);
+		valide.setBounds(150, 140, 78, 20);
+
+		valide.addActionListener(new TraitementSettings());
 
 	}
-	
-//	class ItemState implements ItemListener{
-//
-//	    public void itemStateChanged(ItemEvent e) {
-//
-//	      System.out.println("événement déclenché sur : " + e.getItem());
-//	      
-//	      setBord(Color.BLUE);
-//
-//	    }               
-//
-//	  }
 
 	public class TraitementCouleur implements ActionListener {
 
@@ -89,13 +90,30 @@ public class FrameSettings extends FramePrincipale {
 			Object newItem = cb.getSelectedItem();
 
 			if ("comboBoxEdited".equals(e.getActionCommand())) {
-				panelCenter.setBackground((Color) newItem);
+				// panelCenter.setBackground((Color) newItem);
+
 			} else if ("comboBoxChanged".equals(e.getActionCommand())) {
-				panelCenter.setBackground((Color) newItem);
+				//panelCenter.setBackground((Color) newItem);
+				ColorManager.stockColor((Color) newItem);
+				ColorManager.destockColor();
+
 			}
 
 		}
 
+	}
+
+	public class TraitementSettings implements ActionListener {
+		/**
+		 * comportement du bouton gallerie,
+		 */
+		public void actionPerformed(ActionEvent e) {
+
+			JFrame parametres = new FrameSettings();
+			parametres.setVisible(true);
+
+			dispose();
+		}
 	}
 
 }

@@ -14,8 +14,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import fonctions.ColorManager;
+
 /*
- * Architecture principale du projet, mère de toute les frames appelées.
+ * Architecture principale du projet, mère de toutes les frames appelées.
  */
 
 @SuppressWarnings("serial")
@@ -29,11 +31,10 @@ public abstract class FramePrincipale extends JFrame {
 	private JPanel panelWest = new JPanel();
 
 	// couleur du smartphone
-	private Color bord = Color.BLACK ;
+	private Color bord = ColorManager.getNewColor();
 
 	// création des boutons
-
-	private JButton boutonMenu = new JButton("");
+	private JButton boutonMenu = new JButton();
 	private JButton boutonExit = new JButton();
 
 	// création du label des services
@@ -57,8 +58,6 @@ public abstract class FramePrincipale extends JFrame {
 		this.setUndecorated(true);
 		this.setLayout(null);
 		this.setVisible(true);
-		
-		
 
 		// Ajout de des panels
 
@@ -84,7 +83,7 @@ public abstract class FramePrincipale extends JFrame {
 		// fonctions dans FrameAccueil
 
 		// adapte l'image à la couleur du smartphone (variable bord)
-		if (bord.equals(Color.BLACK)) {
+		if (bord.equals(Color.BLACK)||bord.equals(Color.blue)||bord.equals(Color.DARK_GRAY)) {
 			boutonExit.setIcon(new ImageIcon("./icon/powerW.png"));
 			boutonMenu.setIcon(new ImageIcon("./icon/homeW.png"));
 		} else {
@@ -96,54 +95,53 @@ public abstract class FramePrincipale extends JFrame {
 		boutonExit.setBounds(365, 10, 34, 34);
 		boutonExit.setContentAreaFilled(false);
 		boutonExit.setBorderPainted(false);
+
 		boutonExit.addActionListener(new TraitementExit());
 
 		panelSouth.add(boutonMenu);
 		boutonMenu.setBounds(panelSouth.getWidth() / 2 - 17, panelSouth.getHeight() / 2 - 17, 34, 34);
 		boutonMenu.setContentAreaFilled(false);
 		boutonMenu.setBorderPainted(false);
+
 		boutonMenu.addActionListener(new TraitementMenu());
 
 		// ajout du titre du smartphone
-
 		panelNorth.add(labelTitre);
 		labelTitre.setText("EliVal");
-		labelTitre.setFont(new Font("helvetica", Font.BOLD, 20));
-		labelTitre.setBounds(180, 15, 400, 13);
+		labelTitre.setFont(new Font("helvetica", Font.BOLD, 25));
+		labelTitre.setBounds(180, 20, 400, 30);
 
 		// ajout du panel de service dans panelnorth,
-		//avec Jlabel date et JLabel heure ( si possible batterie, etc. )
-		
 		panelNorth.add(panelService);
 		panelService.setBounds(21, 80, 378, 25);
-		panelService.setBackground(Color.GRAY);		
-		
-		date = new SimpleDateFormat("dd MMMM YYYY");		
+		panelService.setBackground(Color.GRAY);
+
+		// avec Jlabel date et JLabel heure ( si possible batterie, etc. )
+		date = new SimpleDateFormat("dd MMMM YYYY");
 		panelService.add(labelDate);
 		labelDate.setText(date.format(new Date()));
 		labelDate.setFont(new Font("helvetica", Font.BOLD, 12));
-		
-		heure = new SimpleDateFormat("HH:mm");		
+
+		heure = new SimpleDateFormat("HH:mm");
 		panelService.add(labelHeure);
 		labelHeure.setText(heure.format(new Date()));
 		labelHeure.setFont(new Font("helvetica", Font.BOLD, 12));
-		
-		
-		
 
 	}
-
-	public Color getBord() {
-		return bord;
-	}
-
-	public void setBord(Color bord) {
-		this.bord = bord;
-	}
+	
+//	public Color getBord() {
+//		return bord;
+//	}
+//
+//	public static void setBord() {
+//		bord =  ColorManager.getNewColor();
+//	}
+//
+//	
 
 	public class TraitementExit implements ActionListener {
 		/**
-		 * comportement de base du bouton exit posssibilité de donner le choix ( Exit,
+		 * comportement de base du bouton exit possibilité de donner le choix ( Exit,
 		 * Veille, Redémarrer) redémarrage avec Runtime.getRuntime().exec("java -jar
 		 * MonProg.jar");
 		 */
@@ -166,13 +164,5 @@ public abstract class FramePrincipale extends JFrame {
 			dispose();
 		}
 	}
-
-	// public SimpleDateFormat getHeure() {
-	// return heure;
-	// }
-	//
-	// public void setHeure(SimpleDateFormat heure) {
-	// this.heure = heure;
-	// }
 
 }

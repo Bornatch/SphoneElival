@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +18,12 @@ import javax.swing.text.MaskFormatter;
 
 import BDContacts.Contacts;
 
+/**
+ * Frame d'ajout et de modification des contacts *
+ * 
+ * @author Bornatch
+ *
+ */
 @SuppressWarnings("serial")
 public class FrameAddContact extends FramePrincipale {
 
@@ -57,7 +62,7 @@ public class FrameAddContact extends FramePrincipale {
 
 		// Ajout du panel dans ma frame
 		this.add(panelCenter, BorderLayout.CENTER);
-		//panelCenter.setBackground(Color.gray);
+		// panelCenter.setBackground(Color.gray);
 		panelCenter.setLayout(null);
 		panelCenter.setBounds(21, 105, 378, 609);
 
@@ -174,7 +179,7 @@ public class FrameAddContact extends FramePrincipale {
 		public void actionPerformed(ActionEvent e) {
 
 			String nom = nomField.getText();
-			String prenom = prenomField.getText();			
+			String prenom = prenomField.getText();
 			String numNatel = numNatelField.getText();
 			String numPro = numProField.getText();
 			String mail = mailField.getText();

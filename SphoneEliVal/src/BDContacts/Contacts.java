@@ -83,7 +83,7 @@ public class Contacts implements Serializable {
 	//
 
 	/**
-	 * Meth pour enregistrer un objet dans un fichier
+	 * Methode pour enregistrer un objet dans un fichier
 	 *
 	 */
 	public static void serializeObject(Contacts c) throws IOException {

@@ -12,9 +12,9 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
 /*
- * Classe de gestion de la combobox du choix de couleur du smarrtphone de FrameSettings
+ * Classe de gestion de la combobox du choix de couleur du smartphone de FrameSettings
  * code copié :  https://www.developpez.net/forums/d302785/java/interfaces-graphiques-java/awt-swing/faire-combo-simple-choix-couleur/
- * modification Valentin Borntici
+ * modifications Valentin Borntici
  */
 @SuppressWarnings({ "serial", "rawtypes" })
 public class ColorComboRenderer extends JPanel implements ListCellRenderer {
