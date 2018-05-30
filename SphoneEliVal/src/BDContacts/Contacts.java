@@ -28,44 +28,45 @@ public class Contacts implements Serializable {
 	private String Email;
 	private Photos Photo;
 	private String numProfessionel;
+	private Contacts nouveau ;
 
-	HashMap listecontacts;// Dictionnaire, list de contacts à voir
+	ArrayList <Contacts>listecontacts;
 
-	public Contacts(String nom, String prenom, String numnatel, String numprofessionel, String email) {// A appeler lors
+	public Contacts(String prenom, String nom, String numnatel, String numprofessionel, String email) {// A appeler lors
 																										// du click sur
-																										// bouton add
-
+																								// bouton add
 		Nom = nom;
 		Prenom = prenom;
 		numNatel = numnatel;
 		numProfessionel = numprofessionel;
 		Email = email;
+		
+		listecontacts=new ArrayList<Contacts>();
 
-		listecontacts = new HashMap<String, Contacts>();
+	
 
 	}
 
-	public String creerCle(Contacts c) { // Meth qui cree une clé pour la gestion de contacts en mayuscules.
+	public String creerCle(Contacts c) { // Meth pour la recherche des contacts à modifier ou supprimer
 		String temp;
-		temp = (c.getPrenom().charAt(0) + c.getNom());
+		temp = (c.getPrenom().charAt(0) + c.getNom()+c.getNumNatel());
 
 		return temp.toUpperCase();
 	}
 
-	public void AddContact(Contacts c) {
-//		// Contacts c=new Contacts (); //on doit appeller le constructeur String
-//		// Nom,String Prenom,String numNatel,String numProfessionel,String Email
-//
-//		String clé = creerCle(c);
-//		if (listecontacts.get(clé) == null) {
-//			listecontacts.put(clé, c);
-//
-//			// System.out.println(listecontacts.get(clé)+" existe dejà");
-//		} else
-//			modifierContact();
+	public void AddContact(Contacts nouveau) {
 		
-		
-
+        listecontacts.add(nouveau) ;
+		 
+	}    
+	
+	
+	public void afficherListe() {
+		for (int i=0;i< listecontacts.size();i++) {
+		Contacts temp= (Contacts) listecontacts.get(i);
+			System.out.println(temp.getPrenom()+" "+temp.getNom());
+		} 
+			
 	}
 
 	public Contacts(Photos photo) {
@@ -77,6 +78,7 @@ public class Contacts implements Serializable {
 
 	}
 
+	
 	public void supprimerContact() {
 
 	}
