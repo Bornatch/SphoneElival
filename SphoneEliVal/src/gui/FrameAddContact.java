@@ -185,7 +185,8 @@ public class FrameAddContact extends FramePrincipale {
 			String mail = mailField.getText();
 
 			Contacts nouveau = new Contacts(nom, prenom, numNatel, numPro, mail);
-
+			
+			// nouveau.AddContact(nouveau); // Ajouter le contact dans la liste à voir si necéssaire
 			try {
 				Contacts.serializeObject(nouveau);
 			} catch (IOException e2) {

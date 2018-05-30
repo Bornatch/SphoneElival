@@ -74,15 +74,15 @@ public class FrameContacts extends FramePrincipale {
 		scrollPane.setBounds(21, 205, 378, 570);
 		
 		//Ajout des contacts
-//		contactsList = Contacts.deserializeContacts();
-//		
-//		for (Contacts contact : contactsList) {
-//			panelCenter.add(new JLabel(contact.getNom()+" "+contact.getPrenom()));
-//			System.out.println(contact.getNom()+" "+contact.getPrenom());
-//			System.out.println("bonjour");
+//	contactsList = Contacts.deserializeContacts();
+		
+//	for (Contacts contact : contactsList) {
+//		panelCenter.add(new JLabel(contact.getNom()+" "+contact.getPrenom()));
+//		System.out.println(contact.getNom()+" "+contact.getPrenom());
+//		System.out.println("bonjour");
 //		}
-//		
-//		System.out.println("au Revoir");
+		
+//	System.out.println("au Revoir");
 
 	}
 	

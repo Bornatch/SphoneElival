@@ -101,6 +101,9 @@ public class Contacts implements Serializable {
 		obfichier.close();
 
 	}
+	
+	
+	
 
 //	/**
 //	 * Meth pour désérializer les contacts, crée une liste de contacts
