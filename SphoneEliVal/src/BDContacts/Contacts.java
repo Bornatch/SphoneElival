@@ -30,43 +30,60 @@ public class Contacts implements Serializable {
 	private String numProfessionel;
 	private Contacts nouveau ;
 
-	ArrayList <Contacts>listecontacts;
+	       ArrayList <Contacts>listeContactsEcriture;
+	static ArrayList <Contacts>listeContactsLecture;
+	
+	/**
+	 *Constructors
+	 *	 	
+	 * */
 
-	public Contacts(String prenom, String nom, String numnatel, String numprofessionel, String email) {// A appeler lors
-																										// du click sur
-																								// bouton add
+	public Contacts(String prenom, String nom, String numnatel, String numprofessionel, String email) {																										// du click sur
+																								
 		Nom = nom;
 		Prenom = prenom;
 		numNatel = numnatel;
 		numProfessionel = numprofessionel;
-		Email = email;
+		Email = email;		
+		//listeContactsEcriture=new ArrayList<Contacts>(); A voir
+	}
+	
+	public Contacts (String Prenom,String numNatel,String Email) {
+		this.Prenom=Prenom;
+		this.numNatel=numNatel;
+		this.Email=Email;
 		
-		listecontacts=new ArrayList<Contacts>();
+	}
+	/**
+	 * Methodes
+	 *
+	 */
+	public String ToString() {
+		return Prenom+" "+Nom;
+	}
 
 	
-
-	}
-
-	public String creerCle(Contacts c) { // Meth pour la recherche des contacts à modifier ou supprimer
-		String temp;
-		temp = (c.getPrenom().charAt(0) + c.getNom()+c.getNumNatel());
-
-		return temp.toUpperCase();
-	}
-
-	public void AddContact(Contacts nouveau) {
-		
-        listecontacts.add(nouveau) ;
+	public void AddContact(Contacts nouveau) {		//Methode pour add contacts serialiser et afficher list contact
+		listeContactsEcriture.add(nouveau) ;
 		 
-	}    
-	
-	
-	public void afficherListe() {
-		for (int i=0;i< listecontacts.size();i++) {
-		Contacts temp= (Contacts) listecontacts.get(i);
-			System.out.println(temp.getPrenom()+" "+temp.getNom());
-		} 
+          try {
+			serializeObject(listeContactsEcriture);
+		} catch (IOException e) {
 			
+			e.printStackTrace();
+		}
+          
+          afficherList();
+          
+	}    
+	  
+	public void afficherList() {                          //affiche la liste
+		for (int i=0;i< listeContactsEcriture.size();i++) {
+		Contacts temp= (Contacts) listeContactsEcriture.get(i);
+			//System.out.println(temp.getPrenom()+" "+temp.getNom());//autre façon d'afficher
+		
+			System.out.println(temp);//Affichage avec la meth ToString modifié
+		}
 	}
 
 	public Contacts(Photos photo) {
@@ -85,23 +102,41 @@ public class Contacts implements Serializable {
 	//
 
 	/**
-	 * Methode pour enregistrer un objet dans un fichier
+	 * Methodes pour sérialiser et déserialisé une list
 	 *
 	 */
-	public static void serializeObject(Contacts c) throws IOException {
-		// ouvrir un lien vers le fichier
-		// le fich va être crée
-		// chemin à controler
-		FileOutputStream fichier = new FileOutputStream("./DataContact/" + c.Nom + c.Prenom + ".ser");
-
-		BufferedOutputStream bfichier = new BufferedOutputStream(fichier);
-
-		ObjectOutputStream obfichier = new ObjectOutputStream(bfichier);
-		obfichier.writeObject(c);
-		obfichier.close();
-
-	}
 	
+	public static void serializeObject(ArrayList<Contacts> listeContactsEcriture) throws IOException { //sérialisation de la liste
+		//ouvrir unlien vers le fichier
+		//le fich va être creer
+		FileOutputStream fichier=new FileOutputStream ("./Datacontact/sauvergarde.ser");
+		
+		BufferedOutputStream bfichier=new BufferedOutputStream(fichier);
+		
+		ObjectOutputStream obfichier=new ObjectOutputStream(bfichier);
+		obfichier.writeObject(listeContactsEcriture);
+		obfichier.close();
+		
+	}
+	public static void deserializedObject(String f) throws IOException, ClassNotFoundException{// déserialisation de la liste
+		
+	listeContactsLecture=new ArrayList<Contacts>();
+		
+	FileInputStream fichier=new FileInputStream (f);
+	BufferedInputStream bfichier=new BufferedInputStream(fichier);
+	ObjectInputStream obfichier=new ObjectInputStream(bfichier);
+	
+	listeContactsLecture=(ArrayList<Contacts>)obfichier.readObject();
+	
+	//Personne moi=(Personne)obfichier.readObject();autre possibilité pour afficher l'objet
+	//obfichier.readObject(); c'est la même chose
+	//System.out.println("Voci l'objet"+obfichier.readObject());//autre possibilité pour afficher 
+	//                                                                            l'objet via la meth ToString
+	for(Contacts c:listeContactsLecture) {
+		System.out.println(c);
+	}
+		
+}
 	
 	
 

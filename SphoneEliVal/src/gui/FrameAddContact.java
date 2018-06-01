@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -185,10 +186,15 @@ public class FrameAddContact extends FramePrincipale {
 			String mail = mailField.getText();
 
 			Contacts nouveau = new Contacts(nom, prenom, numNatel, numPro, mail);
+			/**
+			 * initialisation de Array pour ensuite serialiser Array
+			 */
+			ArrayList<Contacts>listeContactsEcriture;
+			listeContactsEcriture=new ArrayList<Contacts>();
 			
 			// nouveau.AddContact(nouveau); // Ajouter le contact dans la liste à voir si necéssaire
 			try {
-				Contacts.serializeObject(nouveau);
+				Contacts.serializeObject(listeContactsEcriture);
 			} catch (IOException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
