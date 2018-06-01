@@ -192,7 +192,8 @@ public class FrameAddContact extends FramePrincipale {
 			ArrayList<Contacts>listeContactsEcriture;
 			listeContactsEcriture=new ArrayList<Contacts>();
 			
-			// nouveau.AddContact(nouveau); // Ajouter le contact dans la liste à voir si necéssaire
+			nouveau.AddContact(nouveau); // Ajouter le contact dans la liste
+			
 			try {
 				Contacts.serializeObject(listeContactsEcriture);
 			} catch (IOException e2) {
