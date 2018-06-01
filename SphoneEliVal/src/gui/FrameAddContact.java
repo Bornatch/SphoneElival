@@ -189,10 +189,9 @@ public class FrameAddContact extends FramePrincipale {
 			/**
 			 * initialisation de Array pour ensuite serialiser Array
 			 */
-			ArrayList<Contacts>listeContactsEcriture;
-			listeContactsEcriture=new ArrayList<Contacts>();
+			ArrayList<Contacts>listeContactsEcriture=new ArrayList<Contacts>();
 			
-			nouveau.AddContact(nouveau); // Ajouter le contact dans la liste
+			//nouveau.AddContact(nouveau); // Ajouter le contact dans la liste , Elle donne erreur
 			
 			try {
 				Contacts.serializeObject(listeContactsEcriture);
