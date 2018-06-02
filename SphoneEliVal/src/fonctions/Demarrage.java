@@ -23,22 +23,17 @@ public class Demarrage {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		/*
-		 * Animation de démarrage try { animInit = new FrameDemarrage();
-		 * Thread.sleep(2000); animInit.dispose(); } catch (InterruptedException e) { //
-		 * TODO Auto-generated catch block e.printStackTrace(); }
-		 */
-
-		JFrame test = new FrameAccueil();
-
-		// Contacts vb = new Contacts("Bornatici", "Valentin", "2017854", "2541",
-		// "2551");
-		// try {
-		// Contacts.serializeObject(vb);
-		// } catch (IOException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
+		// Animation de démarrage
+//		try {
+//			animInit = new FrameDemarrage();
+//			Thread.sleep(2000);
+//			animInit.dispose();
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+		 JFrame test = new FrameAccueil();
 
 		// System.out.println("test1");
 		//

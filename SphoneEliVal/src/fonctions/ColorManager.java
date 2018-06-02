@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 /**
  * Classe de gestion de la couleur du Smartphone via sauvegarde dans fichier
@@ -19,7 +20,8 @@ import java.io.ObjectOutputStream;
  *
  */
 
-public abstract class ColorManager {
+public abstract class ColorManager implements Serializable {	
+	private static final long serialVersionUID = -7148233319040958114L;
 
 	static Color newColor;
 
@@ -28,8 +30,7 @@ public abstract class ColorManager {
 	/**
 	 * Sérialize un objet couleur
 	 * 
-	 * @param c
-	 *            couleur reçue du combobox
+	 * @param c couleur reçue du combobox
 	 * 
 	 */
 	public static void stockColor(Color c) {
@@ -93,7 +94,7 @@ public abstract class ColorManager {
 	/**
 	 * méthode de mise à jour et de renvoie de la couleur de FramePrincipale
 	 * 
-	 * @return la nouvelle couleur
+	 * @return la couleur lue dans le fichier settings.ser
 	 */
 	public static Color getNewColor() {
 		destockColor();
