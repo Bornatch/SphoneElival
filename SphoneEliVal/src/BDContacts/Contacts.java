@@ -203,90 +203,90 @@ public class Contacts implements Serializable {
 
 	}
 
-	// /**
-	// * Meth pour désérializer les contacts, crée une liste de contacts
-	// *
-	// */
-	// public static List<Contacts> deserializeContacts() throws IOException {
+	 /**
+	 * Meth pour désérializer les contacts, crée une liste de contacts
+	 *
+	 */
+	 public static List<Contacts> deserializeContacts() throws IOException {
+	
+	 // liste de réception des contacts
+	 List<Contacts> mesContacts = new ArrayList<Contacts>();
+	
+	 // Fichiers à désérializer
+	 File dossier = new File("./DataContact/");
+	 File[] fichier = dossier.listFiles();
+	
+	 // Création et ouverture des stream de lecture
+	 FileInputStream fileIn = null;
+	 BufferedInputStream buffIn = null;
+	 ObjectInputStream objIn = null;
+	
+	 for (int i = 0; i < fichier.length; i++) {
+	 try {
+	 fileIn = new FileInputStream(fichier[i]);
+	 buffIn = new BufferedInputStream(fileIn);
+	 objIn = new ObjectInputStream(buffIn);
+	
+	 // lecture du contact et affectation à la liste
+	 Contacts contact = (Contacts) objIn.readObject();
+	 mesContacts.add(contact);
+	
+	 } catch (Exception e) {
+	
+	 }
+	
+	 }
+	
+	 // fermeture des stream
+	 fileIn.close();
+	 buffIn.close();
+	 objIn.close();
+	
+	 return mesContacts;
+	
+	 }
 	//
-	// // liste de réception des contacts
-	// List<Contacts> mesContacts = new ArrayList<Contacts>();
-	//
-	// // Fichiers à désérializer
-	// File dossier = new File("./DataContact/");
-	// File[] fichier = dossier.listFiles();
-	//
-	// // Création et ouverture des stream de lecture
-	// FileInputStream fileIn = null;
-	// BufferedInputStream buffIn = null;
-	// ObjectInputStream objIn = null;
-	//
-	// for (int i = 0; i < fichier.length; i++) {
-	// try {
-	// fileIn = new FileInputStream(fichier[i]);
-	// buffIn = new BufferedInputStream(fileIn);
-	// objIn = new ObjectInputStream(buffIn);
-	//
-	// // lecture du contact et affectation à la liste
-	// Contacts contact = (Contacts) objIn.readObject();
-	// mesContacts.add(contact);
-	//
-	// } catch (Exception e) {
-	//
-	// }
-	//
-	// }
-	//
-	// // fermeture des stream
-	// fileIn.close();
-	// buffIn.close();
-	// objIn.close();
-	//
-	// return mesContacts;
-	//
-	// }
-	//
-	// public static Contacts deserializeUnContacts(int index) throws IOException {
-	//
-	// // liste de réception des contacts
-	// List<Contacts> mesContacts = new ArrayList<Contacts>();
-	//
-	// // Fichiers à désérializer
-	// File dossier = new File("./DataContact/");
-	// File[] fichier = dossier.listFiles();
-	// for (int i = 0; i < fichier.length; i++) {
-	// System.out.println(fichier[i]);
-	// }
-	//
-	// // Création et ouverture des stream de lecture
-	// FileInputStream fileIn = null;
-	// BufferedInputStream buffIn = null;
-	// ObjectInputStream objIn = null;
-	// Contacts contact = null;
-	//
-	// try {
-	// fileIn = new FileInputStream(fichier[index]);
-	// buffIn = new BufferedInputStream(fileIn);
-	// objIn = new ObjectInputStream(buffIn);
-	// contact = (Contacts) objIn.readObject();
-	// System.out.println("Bonjour de deserializerUnContact");
-	// System.out.println(contact);
-	// mesContacts.add(contact);
-	// // lecture du contact et affectation à la liste
-	//
-	//
-	// } catch (Exception e) {
-	//
-	// }
-	//
-	// // fermeture des stream
-	// fileIn.close();
-	// buffIn.close();
-	// objIn.close();
-	//
-	// return contact;
-	//
-	// }
+//	 public static Contacts deserializeUnContacts(int index) throws IOException {
+//	
+//	 // liste de réception des contacts
+//	 List<Contacts> mesContacts = new ArrayList<Contacts>();
+//	
+//	 // Fichiers à désérializer
+//	 File dossier = new File("./DataContact/");
+//	 File[] fichier = dossier.listFiles();
+//	 for (int i = 0; i < fichier.length; i++) {
+//	 System.out.println(fichier[i]);
+//	 }
+//	
+//	 // Création et ouverture des stream de lecture
+//	 FileInputStream fileIn = null;
+//	 BufferedInputStream buffIn = null;
+//	 ObjectInputStream objIn = null;
+//	 Contacts contact = null;
+//	
+//	 try {
+//	 fileIn = new FileInputStream(fichier[index]);
+//	 buffIn = new BufferedInputStream(fileIn);
+//	 objIn = new ObjectInputStream(buffIn);
+//	 contact = (Contacts) objIn.readObject();
+//	 System.out.println("Bonjour de deserializerUnContact");
+//	 System.out.println(contact);
+//	 mesContacts.add(contact);
+//	 // lecture du contact et affectation à la liste
+//	
+//	
+//	 } catch (Exception e) {
+//	
+//	 }
+//	
+//	 // fermeture des stream
+//	 fileIn.close();
+//	 buffIn.close();
+//	 objIn.close();
+//	
+//	 return contact;
+//	
+//	 }
 
 	/**
 	 * Getters and setters

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInput;
 import java.io.ObjectInputStream;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -34,6 +35,9 @@ public class Demarrage {
 		// }
 		//
 		JFrame test = new FrameAccueil();
+		
+		
+		
 
 		// Contacts vb = new Contacts("Bornatici", "Valentin", "2017854", "2541",
 		// "2551");
