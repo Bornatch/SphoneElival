@@ -33,7 +33,9 @@ public class Demarrage {
 		// e.printStackTrace();
 		// }
 		//
-		JFrame test = new FrameAccueil();
+		//JFrame test = new FrameAccueil();
+		
+		
 
 		// Contacts vb = new Contacts("Bornatici", "Valentin", "2017854", "2541",
 		// "2551");

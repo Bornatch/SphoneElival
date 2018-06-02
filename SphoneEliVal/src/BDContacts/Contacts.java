@@ -132,28 +132,8 @@ public class Contacts implements Serializable {
 		obfichier.writeObject(c);
 	}
 
-	public static void deserializedObject(String f) throws IOException, ClassNotFoundException {// déserialisation de la
-																								// liste
-
-		contactsList = new ArrayList<Contacts>();
-
-		FileInputStream fichier = new FileInputStream(f);
-		BufferedInputStream bfichier = new BufferedInputStream(fichier);
-		ObjectInputStream obfichier = new ObjectInputStream(bfichier);
-
-		contactsList = (ArrayList<Contacts>) obfichier.readObject();
-
-		// Personne moi=(Personne)obfichier.readObject();autre possibilité pour afficher
-		// l'objet
-		// obfichier.readObject(); c'est la même chose
-		// System.out.println("Voci l'objet"+obfichier.readObject());//autre possibilité
-		// pour afficher
-		// l'objet via la meth ToString
-		for (Contacts c : contactsList) {
-			System.out.println(c);
-		}
-
-	}
+	
+	
 
 	/**
 	 * Instancie la liste de contacts en désérialisant les fichiers
