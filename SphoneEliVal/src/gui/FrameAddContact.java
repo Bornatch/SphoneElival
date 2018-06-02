@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -185,14 +186,7 @@ public class FrameAddContact extends FramePrincipale {
 			String mail = mailField.getText();
 
 			Contacts nouveau = new Contacts(nom, prenom, numNatel, numPro, mail);
-
-			try {
-				Contacts.serializeObject(nouveau);
-			} catch (IOException e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
-			}
-
+			
 			JFrame contacts;
 			try {
 				contacts = new FrameContacts();
