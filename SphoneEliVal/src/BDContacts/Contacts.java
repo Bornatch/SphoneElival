@@ -15,8 +15,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.function.ObjIntConsumer;
 
-
+/**
+ * @author Bornatch
+ *
+ */
 public class Contacts implements Serializable {
+
+	// outils de traitement des données
+	private static File dossier = new File("./DataContact/");
+	private static File[] fichiers = dossier.listFiles();
+	private List<Contacts> contactsList = new ArrayList<Contacts>();
 
 	private static final long serialVersionUID = 1L;
 
@@ -28,63 +36,40 @@ public class Contacts implements Serializable {
 	private String Email;
 	private Photos Photo;
 	private String numProfessionel;
-	private Contacts nouveau;
-
 
 	/**
-	 * Constructors
+	 * Constructeur de contacts, utilisé par la frameAddContact btn save
 	 * 
+	 * @param prenom
+	 * @param nom
+	 * @param numnatel
+	 * @param numprofessionel
+	 * @param email
 	 */
+	public Contacts(String prenom, String nom, String numnatel, String numprofessionel, String email) {
 
-	// outils de traitement des données
-	private static File dossier = new File("./DataContact/");
-	private static File[] fichier = dossier.listFiles();
-	private static List<Contacts> contactsList = new ArrayList<Contacts>();
-
-	/**
-	 * Constructeur, A appeler lors du click sur bouton enregistre de nouveau
-	 * contact
-	 */
-
-	public Contacts(String prenom, String nom, String numnatel, String numprofessionel, String email) { // du click sur
-
-		Nom = nom;
-		Prenom = prenom;
-		numNatel = numnatel;
-		numProfessionel = numprofessionel;
-		Email = email;
+		this.Nom = nom;
+		this.Prenom = prenom;
+		this.numNatel = numnatel;
+		this.numProfessionel = numprofessionel;
+		this.Email = email;
 
 	}
 
-	public Contacts(String Prenom, String numNatel, String Email) {
-		this.Prenom = Prenom;
-		this.numNatel = numNatel;
-		this.Email = Email;
-
-		AddContact(this);
-	}
-
 	/**
-	 * Methodes
-	 *
+	 * @return la chaine de string nom prénom
 	 */
 	public String ToString() {
 		return Nom + " " + Prenom;
 
 	}
 
-	
-	public void AddContact(Contacts nouveau) { // Methode pour add contacts serialiser et afficher list contact
-		contactsList.add(nouveau);
+	/**
+	 * @param contact
+	 */
+	public static void AddContact(Contacts nouveau) {
 
-		try {
-			serializeObject(nouveau);
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
-
-		afficherList();
+		serializeObject(nouveau);
 
 	}
 
@@ -104,47 +89,69 @@ public class Contacts implements Serializable {
 
 	}
 
-	public void modifierContact() {
-
+	/**méthode de modification d'un contact
+	 * renvoi la methode deleteContact puis addContact
+	 * @param contact
+	 * @param index
+	 */
+	public static void updateContact(Contacts c, int index) {
+		//System.out.println("entre dans update");
+		deleteContact(index);
+		AddContact(c);
 	}
 
-	public void supprimerContact() {
-
+	public static void deleteContact(int index) {
+		System.out.println("entre dans delete");
+		System.out.println(index);
+		System.out.println(fichiers[index].getPath());
+		fichiers[index].delete();
 	}
+
+	
 
 	/**
-	 * 
-	 * Methode pour enregistrer un objet dans un nouveau fichier .ser ouvrir un lien
-	 * vers le fichier le fich va être crée chemin à controler
-	 * 
-	 * Methodes pour sérialiser et déserialisé une list
-	 *
-	 * 
+	 * Méthode pour sérialiser un contact en créant un fichier et en k'ahjoutant daand dossier DataContact
+	 * @param contact
 	 */
+	public static void serializeObject(Contacts c) {
 
-	public static void serializeObject(Contacts c) throws IOException {
+		FileOutputStream fichier = null;
+		BufferedOutputStream bfichier = null;
+		ObjectOutputStream obfichier = null;
+		try {
+			fichier = new FileOutputStream("./DataContact/" + c.Nom + c.Prenom + ".ser");
 
-		FileOutputStream fichier = new FileOutputStream("./DataContact/" + c.Nom + c.Prenom + ".ser");
-
-		BufferedOutputStream bfichier = new BufferedOutputStream(fichier);
-
-		ObjectOutputStream obfichier = new ObjectOutputStream(bfichier);
-		obfichier.writeObject(c);
+			bfichier = new BufferedOutputStream(fichier);
+			obfichier = new ObjectOutputStream(bfichier);
+			obfichier.writeObject(c);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				obfichier.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
-	//test
-	
+	// test
 
 	/**
 	 * Instancie la liste de contacts en désérialisant les fichiers
 	 */
-	public static void readObjectToList() {
+	public void readObjectToList() {
 
 		ObjectInputStream objIn = null;
 
-		for (int i = 0; i < fichier.length; i++) {
+		for (int i = 0; i < fichiers.length; i++) {
 			try {
-				objIn = new ObjectInputStream(new BufferedInputStream(new FileInputStream(fichier[i])));
+				objIn = new ObjectInputStream(new BufferedInputStream(new FileInputStream(fichiers[i])));
 				contactsList.add((Contacts) objIn.readObject());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -166,50 +173,46 @@ public class Contacts implements Serializable {
 
 	}
 
-
-	 /**
+	/**
 	 * Meth pour désérializer les contacts, crée une liste de contacts
 	 *
 	 */
-	 public static List<Contacts> deserializeContacts() throws IOException {
-	
-	 // liste de réception des contacts
-	 List<Contacts> mesContacts = new ArrayList<Contacts>();
-	
-	 // Fichiers à désérializer
-	 File dossier = new File("./DataContact/");
-	 File[] fichier = dossier.listFiles();
-	
-	 // Création et ouverture des stream de lecture
-	 FileInputStream fileIn = null;
-	 BufferedInputStream buffIn = null;
-	 ObjectInputStream objIn = null;
-	
-	 for (int i = 0; i < fichier.length; i++) {
-	 try {
-	 fileIn = new FileInputStream(fichier[i]);
-	 buffIn = new BufferedInputStream(fileIn);
-	 objIn = new ObjectInputStream(buffIn);
-	
-	 // lecture du contact et affectation à la liste
-	 Contacts contact = (Contacts) objIn.readObject();
-	 mesContacts.add(contact);
-	
-	 } catch (Exception e) {
-	
-	 }
-	
-	 }
-	
-	 // fermeture des stream
-	 fileIn.close();
-	 buffIn.close();
-	 objIn.close();
-	
-	 return mesContacts;
-	
-	 }
-	
+	public static List<Contacts> deserializeContacts() throws IOException {
+
+		// liste de réception des contacts
+		List<Contacts> mesContacts = new ArrayList<Contacts>();
+
+		// Création et ouverture des stream de lecture
+		FileInputStream fileIn = null;
+		BufferedInputStream buffIn = null;
+		ObjectInputStream objIn = null;
+		// System.out.println(fichiers.length);
+
+		for (int i = 0; i < fichiers.length; i++) {
+			try {
+				fileIn = new FileInputStream(fichiers[i]);
+				buffIn = new BufferedInputStream(fileIn);
+				objIn = new ObjectInputStream(buffIn);
+
+				// lecture du contact et affectation à la liste
+				Contacts contact = (Contacts) objIn.readObject();
+				mesContacts.add(contact);
+
+			} catch (Exception e) {
+
+			}
+
+		}
+
+		// fermeture des stream
+		fileIn.close();
+		buffIn.close();
+		objIn.close();
+
+		// System.out.println("mescontacts : " + mesContacts.size());
+		return mesContacts;
+
+	}
 
 	/**
 	 * Getters and setters
@@ -220,6 +223,14 @@ public class Contacts implements Serializable {
 
 	public void setNumNatel(String numNatel) {
 		this.numNatel = numNatel;
+	}
+
+	public String getNumPro() {
+		return numProfessionel;
+	}
+
+	public void setNumPro(String numProfessionel) {
+		this.numProfessionel = numProfessionel;
 	}
 
 	public String getEmail() {
@@ -246,26 +257,18 @@ public class Contacts implements Serializable {
 		Prenom = prenom;
 	}
 
-	// public HashMap getListecontacts() {
-	// return listecontacts;
-	// }
-	//
-	// public void setListecontacts(HashMap listecontacts) {
-	// this.listecontacts = listecontacts;
-	// }
-	//
 	/**
 	 * Methode d'envoie de la liste de contacts
 	 * 
 	 * @return la liste de contacts mise à jour
 	 */
-	public static List<Contacts> getContactsList() {
+	public List<Contacts> getContactsList() {
 		readObjectToList();
 		return contactsList;
 	}
 
-	public static void setContactsList(List<Contacts> contactsList) {
-		contactsList = contactsList;
+	public void setContactsList(List<Contacts> contactsList) {
+		this.contactsList = contactsList;
 	}
 
 }

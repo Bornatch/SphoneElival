@@ -175,7 +175,7 @@ public class FrameAddContact extends FramePrincipale {
 
 	public class TraitementSave implements ActionListener {
 		/**
-		 * comportement du bouton save (cancel),
+		 * comportement du bouton save
 		 */
 		public void actionPerformed(ActionEvent e) {
 
@@ -185,7 +185,8 @@ public class FrameAddContact extends FramePrincipale {
 			String numPro = numProField.getText();
 			String mail = mailField.getText();
 
-			Contacts nouveau = new Contacts(nom, prenom, numNatel, numPro, mail);
+			Contacts nouveau = new Contacts(prenom, nom, numNatel, numPro, mail);
+			Contacts.AddContact(nouveau);
 			
 			JFrame contacts;
 			try {
