@@ -61,7 +61,7 @@ public class Contacts implements Serializable {
 	 *
 	 */
 	public String ToString() {
-		return Prenom+" "+Nom;
+		return Nom+" "+Prenom;
 	}
 
 	
@@ -176,7 +176,7 @@ public class Contacts implements Serializable {
 //
 //		}
 //
-//		// fermeture des stream
+//	//	fermeture des stream
 //		fileIn.close();
 //		buffIn.close();
 //		objIn.close();
