@@ -86,7 +86,7 @@ public class FrameContacts extends FramePrincipale implements ListSelectionListe
 		this.add(scrollPane, BorderLayout.CENTER);
 		scrollPane.setBounds(21, 205, 378, 570);
 		
-		System.out.println();
+		
 		
 		
 //		// Créer une liste des Imagesicon, le -1 retire le fichier thumbs
