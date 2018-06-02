@@ -25,11 +25,11 @@ public class Demarrage {
 
 		
 		 // Animation de démarrage 
-		try { animInit = new FrameDemarrage();
-		  Thread.sleep(2000); animInit.dispose(); } catch (InterruptedException e) { //
-		 //TODO Auto-generated			  catch block
-			  e.printStackTrace(); }
-		
+//		try { animInit = new FrameDemarrage();
+//		  Thread.sleep(2000); animInit.dispose(); } catch (InterruptedException e) { //
+//		 //TODO Auto-generated			  catch block
+//			  e.printStackTrace(); }
+//		
 
 		JFrame test = new FrameAccueil();
 		

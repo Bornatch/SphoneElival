@@ -44,7 +44,8 @@ public class Contacts implements Serializable {
 		Prenom = prenom;
 		numNatel = numnatel;
 		numProfessionel = numprofessionel;
-		Email = email;		
+		Email = email;	
+		
 		//listeContactsEcriture=new ArrayList<Contacts>(); A voir
 	}
 	
@@ -53,6 +54,7 @@ public class Contacts implements Serializable {
 		this.numNatel=numNatel;
 		this.Email=Email;
 		
+		AddContact(this); 
 	}
 	/**
 	 * Methodes
@@ -67,7 +69,7 @@ public class Contacts implements Serializable {
 		listeContactsEcriture.add(nouveau) ;
 		 
           try {
-			serializeObject(listeContactsEcriture);
+			serializeObject(nouveau);
 		} catch (IOException e) {
 			
 			e.printStackTrace();
@@ -106,15 +108,15 @@ public class Contacts implements Serializable {
 	 *
 	 */
 	
-	public static void serializeObject(ArrayList<Contacts> listeContactsEcriture) throws IOException { //sérialisation de la liste
+	public static void serializeObject(Contacts contact) throws IOException { //sérialisation de la liste
 		//ouvrir unlien vers le fichier
 		//le fich va être creer
-		FileOutputStream fichier=new FileOutputStream ("./Datacontact/sauvergarde.ser");
+		FileOutputStream fichier=new FileOutputStream ("./Datacontact/"+contact.getNom()+contact.getPrenom()+".ser");
 		
 		BufferedOutputStream bfichier=new BufferedOutputStream(fichier);
 		
 		ObjectOutputStream obfichier=new ObjectOutputStream(bfichier);
-		obfichier.writeObject(listeContactsEcriture);
+		obfichier.writeObject(contact);
 		obfichier.close();
 		
 	}

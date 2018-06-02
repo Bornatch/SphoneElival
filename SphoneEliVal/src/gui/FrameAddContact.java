@@ -186,20 +186,7 @@ public class FrameAddContact extends FramePrincipale {
 			String mail = mailField.getText();
 
 			Contacts nouveau = new Contacts(nom, prenom, numNatel, numPro, mail);
-			/**
-			 * initialisation de Array pour ensuite serialiser Array
-			 */
-			ArrayList<Contacts>listeContactsEcriture=new ArrayList<Contacts>();
 			
-			//nouveau.AddContact(nouveau); // Ajouter le contact dans la liste , Elle donne erreur
-			
-			try {
-				Contacts.serializeObject(listeContactsEcriture);
-			} catch (IOException e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
-			}
-
 			JFrame contacts;
 			try {
 				contacts = new FrameContacts();
