@@ -86,23 +86,25 @@ public class FrameContacts extends FramePrincipale implements ListSelectionListe
 		this.add(scrollPane, BorderLayout.CENTER);
 		scrollPane.setBounds(21, 205, 378, 570);
 		
+		System.out.println();
 		
-		// Créer une liste des Imagesicon, le -1 retire le fichier thumbs
-				for (int i = 0; i < contactsList.size() ; i++) {
-					
-					//redimmensionnement de l'image
-					
-					miniatures.add(new JButton(contactsList.get(i)));
-					
-					//ajout de chaque miniature
-					panelCenter.add(miniatures.get(i));			
-					miniatures.get(i).setPreferredSize(new Dimension(100, 100));
-					
-					//Ajout du numéro d'index pour gestion des events
-					miniatures.get(i).setName("" + i);
-					miniatures.get(i).addActionListener(new TraitementImage());
-
-				}
+		
+//		// Créer une liste des Imagesicon, le -1 retire le fichier thumbs
+//				for (int i = 0; i < contactsList.size() ; i++) {
+//					
+//					//redimmensionnement de l'image
+//					
+//					//miniatures.add(new JButton(contactsList.get(i)));
+//					
+//					//ajout de chaque miniature
+//					panelCenter.add(miniatures.get(i));			
+//					miniatures.get(i).setPreferredSize(new Dimension(100, 100));
+//					
+//					//Ajout du numéro d'index pour gestion des events
+//					miniatures.get(i).setName("" + i);
+//					miniatures.get(i).addActionListener(new TraitementImage());
+//
+//				}
 
 //		// Création des String de contacts pour la Jlist
 //		try {
