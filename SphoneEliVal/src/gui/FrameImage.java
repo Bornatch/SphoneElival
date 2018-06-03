@@ -79,6 +79,12 @@ public class FrameImage extends FramePrincipale {
 
 	}
 
+	/**
+	 * test de methode de redimmensionnement...
+	 * @param imageIcon
+	 * @param extension
+	 * @return
+	 */
 	@SuppressWarnings("unused")
 	private Icon ajuste(ImageIcon imageIcon, String extension) {
 		ImageIcon origine = imageIcon;

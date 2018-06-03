@@ -20,12 +20,12 @@ import java.io.Serializable;
  *
  */
 
-public abstract class ColorManager implements Serializable {	
+public abstract class ColorManagerBord implements Serializable {	
 	private static final long serialVersionUID = -7148233319040958114L;
 
 	static Color newColor;
 
-	static File stock = new File("./icon/temp", "settings.ser");
+	static File stock = new File("./icon/temp", "couleurBord.ser");
 
 	/**
 	 * Sérialize un objet couleur
@@ -102,7 +102,7 @@ public abstract class ColorManager implements Serializable {
 	}
 
 	public static void setNewColor(Color newColor) {
-		ColorManager.newColor = newColor;
+		ColorManagerBord.newColor = newColor;
 	}
 
 }

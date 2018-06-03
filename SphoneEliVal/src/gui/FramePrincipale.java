@@ -14,7 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import fonctions.ColorManager;
+import fonctions.*;
+
 
 /*
  * Architecture principale du projet, mère de toutes les frames appelées.
@@ -30,8 +31,11 @@ public abstract class FramePrincipale extends JFrame {
 	private JPanel panelEast = new JPanel();
 	private JPanel panelWest = new JPanel();
 
-	// couleur du smartphone
-	private Color bord = ColorManager.getNewColor();
+	// couleur des bordures du smartphone
+	private Color bord = ColorManagerBord.getNewColor();
+	
+	// couleur des bordures du smartphone
+	private Color menu = ColorManagerMenu.getNewColor();
 
 	// création des boutons
 	private JButton boutonMenu = new JButton();
@@ -58,6 +62,7 @@ public abstract class FramePrincipale extends JFrame {
 		this.setUndecorated(true);
 		this.setLayout(null);
 		this.setVisible(true);
+		this.setBackground(menu);
 
 		// Ajout de des panels
 

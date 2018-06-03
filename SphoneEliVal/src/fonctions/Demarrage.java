@@ -1,20 +1,12 @@
 package fonctions;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
-import java.util.Iterator;
-import java.util.List;
-import java.util.logging.Level;
+import java.awt.image.ImageFilter;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
-import BDContacts.Contacts;
-import gui.*;
+import gui.FrameAccueil;
 
 public class Demarrage {
 
@@ -37,9 +29,21 @@ public class Demarrage {
 
 		JFrame test = new FrameAccueil();
 		
+		//ImgAccueilManager.stockImg(new ImageIcon());
 
-		
-		
+//		try {
+//			// Exemple pour agrandir
+//			BufferedImage img = ImageIO.read(new File("c:/j.png"));
+//			BufferedImage imgnew = ImageRedim.scale(img, 10);
+//			ImageIO.write(imgnew, "png", new File("c:/jgrand.png"));
+//
+//			// Exemple de reduction
+//			BufferedImage imag = ImageIO.read(new File("c:/j.png"));
+//			BufferedImage imagnew = ImageRedim.scale(img, 0.5);
+//			ImageIO.write(imagnew, "png", new File("c:/jpetit.png"));
+//		} catch (IOException ex) {
+//			Logger.getLogger(ImageRedim.class.getName()).log(Level.SEVERE, null, ex);
+//		}
 
 		// Contacts vb = new Contacts("Bornatici", "Valentin", "2017854", "2541",
 		// "2551");

@@ -12,11 +12,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import fonctions.ImgAccueilManager;
+
 @SuppressWarnings("serial")
 public class FrameAccueil extends FramePrincipale {
 
 	// choix d'image pour le fond d'écran (panelCenter)
-	private JLabel fondEcran = new JLabel(new ImageIcon("./Gallerie/fndEcran1.jpg"));
+	private JLabel fondEcran = new JLabel(ImgAccueilManager.getNewImageFnd());
 
 	// création des boutons d'application
 	private JButton images = new JButton(new ImageIcon("./icon/photos.png"));
@@ -41,8 +43,8 @@ public class FrameAccueil extends FramePrincipale {
 		 * bouton.setForeground(Color.BLACK); // nom de l'application
 		 * bouton.setVerticalTextPosition(SwingConstants.BOTTOM) et
 		 * bouton.setHorizontalTextPosition(SwingConstants.CENTER); // position du texte
-		 * bouton.addActionListener(new Traitement...()); // si existant :
-		 * lancement de l'application
+		 * bouton.addActionListener(new Traitement...()); // si existant : lancement de
+		 * l'application
 		 */
 
 		// galerie

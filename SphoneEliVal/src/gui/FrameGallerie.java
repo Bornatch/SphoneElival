@@ -35,7 +35,7 @@ public class FrameGallerie extends FramePrincipale {
 
 		// ajout du panel de présentation des images
 
-		panelCenter.setBackground(Color.gray);
+		panelCenter.setBackground(super.getBackground());
 		panelCenter.setLayout(new GridLayout(0, 3, 10, 10));
 		panelCenter.setBounds(21, 105, 378, 610);
 

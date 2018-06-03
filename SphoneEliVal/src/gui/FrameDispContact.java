@@ -77,7 +77,7 @@ public class FrameDispContact extends FramePrincipale {
 
 		// Ajout du panel dans ma frame
 		this.add(panelCenter, BorderLayout.CENTER);
-		// panelCenter.setBackground(Color.gray);
+		panelCenter.setBackground(super.getBackground());
 		panelCenter.setLayout(null);
 		panelCenter.setBounds(21, 105, 378, 609);
 

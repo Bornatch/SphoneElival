@@ -68,6 +68,7 @@ public class FrameContacts extends FramePrincipale {
 		titreLabel.setFont(titre);
 		titreLabel.setBackground(Color.DARK_GRAY);
 		titreLabel.setBounds(51, 125, 278, 64);
+		titreLabel.setBackground(super.getBackground());
 
 		// Ajout du bouton nouveau contact
 		this.add(addContact);
@@ -82,7 +83,7 @@ public class FrameContacts extends FramePrincipale {
 
 		// ajout de panel de présentation des contacts
 
-		// panelCenter.setBackground(Color.blue);
+		panelCenter.setBackground(super.getBackground());
 		panelCenter.setLayout(new GridLayout(0, 1, 10, 10));
 		panelCenter.setBounds(21, 205, 378, 570);
 
