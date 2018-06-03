@@ -129,15 +129,7 @@ public abstract class FramePrincipale extends JFrame {
 
 	}
 	
-//	public Color getBord() {
-//		return bord;
-//	}
-//
-//	public static void setBord() {
-//		bord =  ColorManager.getNewColor();
-//	}
-//
-//	
+
 
 	public class TraitementExit implements ActionListener {
 		/**

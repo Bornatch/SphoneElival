@@ -30,6 +30,11 @@ import javax.swing.event.ListSelectionListener;
 import BDContacts.Contacts;
 import gui.FrameGallerie.TraitementImage;
 
+/**
+ * Affichage de contacts et bouton d'ajout
+ * @author Bornatch
+ *
+ */
 @SuppressWarnings("serial")
 public class FrameContacts extends FramePrincipale {
 
@@ -39,7 +44,7 @@ public class FrameContacts extends FramePrincipale {
 	private JList jList;
 
 	// liste de contact
-	private List<Contacts> contactsList = Contacts.deserializeContacts();
+	private List<Contacts> contactsList; 
 	private List<String> contactsListToString = new ArrayList<String>();
 
 	// liste de boutons adaptable selon nombre de photos
@@ -82,6 +87,7 @@ public class FrameContacts extends FramePrincipale {
 		panelCenter.setBounds(21, 205, 378, 570);
 
 		// Création du contenu avec la JList
+		contactsList = Contacts.deserializeContacts();
 
 		for (Iterator iterator = contactsList.iterator(); iterator.hasNext();) {
 			Contacts contacts = (Contacts) iterator.next();

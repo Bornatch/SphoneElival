@@ -16,18 +16,18 @@ import java.util.List;
 import java.util.function.ObjIntConsumer;
 
 /**
- * @author Bornatch
+ * @author Elizabeth
  *
  */
 public class Contacts implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	// outils de traitement des données
 	private static File dossier = new File("./DataContact/");
 	private static File[] fichiers = dossier.listFiles();
-	private List<Contacts> contactsList = new ArrayList<Contacts>();
-
-	private static final long serialVersionUID = 1L;
-
+	private static List<Contacts> contactsList = new ArrayList<Contacts>();
+	
 	// outils du constructeur
 
 	private String Nom;
@@ -55,6 +55,11 @@ public class Contacts implements Serializable {
 		this.Email = email;
 
 	}
+	
+	public Contacts(Photos photo) {
+		Photo = photo;
+
+	}
 
 	/**
 	 * @return la chaine de string nom prénom
@@ -70,6 +75,7 @@ public class Contacts implements Serializable {
 	public static void AddContact(Contacts nouveau) {
 
 		serializeObject(nouveau);
+		
 
 	}
 
@@ -84,10 +90,7 @@ public class Contacts implements Serializable {
 
 	}
 
-	public Contacts(Photos photo) {
-		Photo = photo;
-
-	}
+	
 
 	/**méthode de modification d'un contact
 	 * renvoi la methode deleteContact puis addContact
@@ -95,15 +98,17 @@ public class Contacts implements Serializable {
 	 * @param index
 	 */
 	public static void updateContact(Contacts c, int index) {
-		//System.out.println("entre dans update");
+		System.out.println("entre dans update");
 		deleteContact(index);
 		AddContact(c);
 	}
 
+	/**
+	 * Suppression du contact à l'index index de fichiers[]
+	 * @param index
+	 */
 	public static void deleteContact(int index) {
-		System.out.println("entre dans delete");
-		System.out.println(index);
-		System.out.println(fichiers[index].getPath());
+		
 		fichiers[index].delete();
 	}
 

@@ -25,12 +25,12 @@ public class FrameSettings extends FramePrincipale {
 	private JLabel general = new JLabel("Général");
 	private JLabel smartphoneColor = new JLabel("<html>Couleur du <br> smartphone<html>");
 
-	//la combobox de choix de couleurs
+	// la combobox de choix de couleurs
 	private Color[] colorList = { Color.BLACK, Color.blue, Color.CYAN, Color.DARK_GRAY, Color.LIGHT_GRAY, Color.GREEN,
 			Color.WHITE, Color.YELLOW };
 	private JComboBox<Color> couleurs = new JComboBox<Color>(colorList);
 
-	//bouton de validation
+	// bouton de validation
 	private JButton valide = new JButton("Valider");
 
 	// Déclaration des polices
@@ -93,7 +93,7 @@ public class FrameSettings extends FramePrincipale {
 				// panelCenter.setBackground((Color) newItem);
 
 			} else if ("comboBoxChanged".equals(e.getActionCommand())) {
-				//panelCenter.setBackground((Color) newItem);
+				// panelCenter.setBackground((Color) newItem);
 				ColorManager.stockColor((Color) newItem);
 				ColorManager.destockColor();
 

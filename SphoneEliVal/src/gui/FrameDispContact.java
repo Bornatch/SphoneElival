@@ -54,6 +54,7 @@ public class FrameDispContact extends FramePrincipale {
 	// Les boutons : sauvegarde et retour à Contacts
 	private JButton cancel = new JButton(new ImageIcon("./icon/cancel.png"));
 	private JButton save = new JButton(new ImageIcon("./icon/save.png"));
+	private JButton delete = new JButton(new ImageIcon("./icon/trash.png"));
 
 	// Déclaration des polices
 	Font titre = new Font("helvetica", Font.BOLD, 25);
@@ -162,6 +163,13 @@ public class FrameDispContact extends FramePrincipale {
 		cancel.setContentAreaFilled(false);
 		cancel.setBorderPainted(false);
 		cancel.addActionListener(new TraitementCancel());
+		
+		panelCenter.add(delete);
+		delete.setBounds(panelCenter.getWidth() / 3, 500, panelCenter.getWidth() / 3, 70);
+		delete.setOpaque(true);
+		delete.setContentAreaFilled(false);
+		delete.setBorderPainted(false);
+		delete.addActionListener(new TraitementDelete());
 
 		panelCenter.add(save);
 		save.setBounds(0, 500, panelCenter.getWidth() / 3, 70);
@@ -178,6 +186,27 @@ public class FrameDispContact extends FramePrincipale {
 		 */
 		public void actionPerformed(ActionEvent e) {
 
+			JFrame contacts;
+			try {
+				contacts = new FrameContacts();
+				contacts.setVisible(true);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
+			dispose();
+		}
+	}
+	
+	public class TraitementDelete implements ActionListener {
+		/**
+		 * comportement du bouton retour (cancel),
+		 */
+		public void actionPerformed(ActionEvent e) {
+
+			Contacts.deleteContact(index);
+			
 			JFrame contacts;
 			try {
 				contacts = new FrameContacts();
