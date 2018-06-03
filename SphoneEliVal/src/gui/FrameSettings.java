@@ -30,8 +30,6 @@ public class FrameSettings extends FramePrincipale {
 	private JLabel bordLabel = new JLabel("<html>Couleur du <br> smartphone<html>");
 	private JLabel menulabel = new JLabel("<html>Couleur des menus<br> du smartphone<html>");
 	private JLabel imgFndLabel = new JLabel("<html>Fond d'écran<br> du smartphone<html>");
-	
-	
 
 	// la combobox de choix de couleurs des bordures
 	private Color[] colorList = { Color.BLACK, Color.blue, Color.CYAN, Color.DARK_GRAY, Color.LIGHT_GRAY, Color.GREEN,
