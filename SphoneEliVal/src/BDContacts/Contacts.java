@@ -208,6 +208,7 @@ public class Contacts implements Serializable {
 			}
 
 		}
+		
 
 		// fermeture des stream
 		fileIn.close();
