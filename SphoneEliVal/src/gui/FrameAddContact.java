@@ -185,6 +185,8 @@ public class FrameAddContact extends FramePrincipale {
 			String numPro = numProField.getText();
 			String mail = mailField.getText();
 
+			//appeler le meth deleteContact avant de créer le nouveau
+			
 			Contacts nouveau = new Contacts(prenom, nom, numNatel, numPro, mail);
 			Contacts.AddContact(nouveau);
 			
