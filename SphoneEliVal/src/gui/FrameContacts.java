@@ -63,6 +63,7 @@ public class FrameContacts extends FramePrincipale {
 
 	public FrameContacts() throws IOException {
 
+		
 		// ajout du titre
 		this.add(titreLabel);
 		titreLabel.setFont(titre);
