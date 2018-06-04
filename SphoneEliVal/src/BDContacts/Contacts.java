@@ -15,10 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.function.ObjIntConsumer;
 
-/**
- * @author Elizabeth
- *
- */
+
 public class Contacts implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -221,7 +218,7 @@ public class Contacts implements Serializable {
 	}
 
 	/**
-	 * Getters and setters
+	 * Getters et setters
 	 */
 	public String getNumNatel() {
 		return numNatel;
