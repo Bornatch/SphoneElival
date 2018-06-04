@@ -99,6 +99,7 @@ public class FrameContacts extends FramePrincipale {
 		jList = new JList(contactsListToString.toArray());
 		jList.setBorder(new EmptyBorder(10, 10, 10, 10));
 		jList.setFont(liste);
+		//jList.setCellRenderer(new ContactListRenderer());
 		panelCenter.add(jList);
 
 		jList.addListSelectionListener(new TraitementList());

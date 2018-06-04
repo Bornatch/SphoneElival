@@ -20,14 +20,14 @@ import java.util.function.ObjIntConsumer;
  *
  */
 public class Contacts implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	// outils de traitement des données
 	private static File dossier = new File("./DataContact/");
 	private static File[] fichiers = dossier.listFiles();
 	private static List<Contacts> contactsList = new ArrayList<Contacts>();
-	
+
 	// outils du constructeur
 
 	private String Nom;
@@ -36,6 +36,7 @@ public class Contacts implements Serializable {
 	private String Email;
 	private Photos Photo;
 	private String numProfessionel;
+	private String profilPicPath;
 
 	/**
 	 * Constructeur de contacts, utilisé par la frameAddContact btn save
@@ -55,7 +56,7 @@ public class Contacts implements Serializable {
 		this.Email = email;
 
 	}
-	
+
 	public Contacts(Photos photo) {
 		Photo = photo;
 
@@ -75,7 +76,6 @@ public class Contacts implements Serializable {
 	public static void AddContact(Contacts nouveau) {
 
 		serializeObject(nouveau);
-		
 
 	}
 
@@ -90,10 +90,10 @@ public class Contacts implements Serializable {
 
 	}
 
-	
-
-	/**méthode de modification d'un contact
-	 * renvoi la methode deleteContact puis addContact
+	/**
+	 * méthode de modification d'un contact renvoi la methode deleteContact puis
+	 * addContact
+	 * 
 	 * @param contact
 	 * @param index
 	 */
@@ -105,17 +105,18 @@ public class Contacts implements Serializable {
 
 	/**
 	 * Suppression du contact à l'index index de fichiers[]
+	 * 
 	 * @param index
 	 */
 	public static void deleteContact(int index) {
-		
+
 		fichiers[index].delete();
 	}
 
-	
-
 	/**
-	 * Méthode pour sérialiser un contact en créant un fichier et en k'ahjoutant daand dossier DataContact
+	 * Méthode pour sérialiser un contact en créant un fichier et en k'ahjoutant
+	 * daand dossier DataContact
+	 * 
 	 * @param contact
 	 */
 	public static void serializeObject(Contacts c) {
@@ -208,7 +209,6 @@ public class Contacts implements Serializable {
 			}
 
 		}
-		
 
 		// fermeture des stream
 		fileIn.close();
