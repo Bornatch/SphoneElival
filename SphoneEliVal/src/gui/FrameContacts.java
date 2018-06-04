@@ -134,7 +134,9 @@ public class FrameContacts extends FramePrincipale {
 			int index = e.getFirstIndex();
 			JFrame displayContact = new FrameDispContact(index, contactsList);
 			displayContact.setVisible(true);
-
+			
+			contactsList.remove(index);
+          
 		}
 
 	}

@@ -201,7 +201,7 @@ public class FrameDispContact extends FramePrincipale {
 	
 	public class TraitementDelete implements ActionListener {
 		/**
-		 * comportement du bouton retour (cancel),
+		 * comportement du bouton(delete),
 		 */
 		public void actionPerformed(ActionEvent e) {
 
