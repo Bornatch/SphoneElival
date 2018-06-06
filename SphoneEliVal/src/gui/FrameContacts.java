@@ -16,6 +16,7 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -37,10 +38,6 @@ import gui.FrameGallerie.TraitementImage;
  */
 @SuppressWarnings("serial")
 public class FrameContacts extends FramePrincipale {
-	
-	
-
-	
 
 	// création du panel
 	private JPanel panelCenter = new JPanel();
@@ -48,7 +45,7 @@ public class FrameContacts extends FramePrincipale {
 	private JList jList;
 
 	// liste de contact
-	private List<Contacts> contactsList; 
+	private List<Contacts> contactsList;
 	private List<String> contactsListToString = new ArrayList<String>();
 
 	// liste de boutons adaptable selon nombre de photos
@@ -59,6 +56,7 @@ public class FrameContacts extends FramePrincipale {
 
 	// bouton nouveau contact
 	private JButton addContact = new JButton(new ImageIcon("./icon/addContact.png"));
+	JFileChooser chooser;
 
 	// Déclaration des polices
 	Font titre = new Font("helvetica", Font.BOLD, 25);
@@ -67,8 +65,7 @@ public class FrameContacts extends FramePrincipale {
 
 	@SuppressWarnings("unchecked")
 	public FrameContacts() throws IOException {
-		
-		
+
 		// ajout du titre
 		this.add(titreLabel);
 		titreLabel.setFont(titre);
@@ -94,8 +91,8 @@ public class FrameContacts extends FramePrincipale {
 		panelCenter.setBounds(21, 205, 378, 570);
 
 		// Création du contenu avec la JList
-		contactsListToString.clear();        //vide la liste
-		
+		contactsListToString.clear(); // vide la liste
+
 		contactsList = Contacts.deserializeContacts();
 
 		for (Iterator iterator = contactsList.iterator(); iterator.hasNext();) {
@@ -106,8 +103,9 @@ public class FrameContacts extends FramePrincipale {
 		// Affichege de la jlist de contact
 		jList = new JList(contactsListToString.toArray());
 		jList.setBorder(new EmptyBorder(10, 10, 10, 10));
+		jList.setFixedCellHeight(45);
 		jList.setFont(liste);
-		//jList.setCellRenderer(new ContactListRenderer());
+		// jList.setCellRenderer(new ContactListRenderer());
 		panelCenter.add(jList);
 
 		jList.addListSelectionListener(new TraitementList());
@@ -142,7 +140,7 @@ public class FrameContacts extends FramePrincipale {
 			JFrame displayContact = new FrameDispContact(index, contactsList);
 			displayContact.setVisible(true);
 			System.out.println(index);
-			
+
 		}
 
 	}

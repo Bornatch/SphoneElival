@@ -95,7 +95,7 @@ public class FrameDispContact extends FramePrincipale {
 		// Ajout des labels
 
 		panelCenter.add(imageLabel);
-		imageLabel.setBounds(21, 21, 100, 100);
+		imageLabel.setBounds(20, 5, 100, 100);
 
 		panelCenter.add(nomTitreLabel);
 		nomTitreLabel.setFont(ssTitre);
@@ -134,27 +134,27 @@ public class FrameDispContact extends FramePrincipale {
 		panelCenter.add(prenomField);
 		prenomField.setFont(texte);
 		prenomField.setText(contactsList.get(index).getPrenom());
-		prenomField.setBounds(150, 140, 200, 25);
+		prenomField.setBounds(150, 140, 200, 30);
 
 		panelCenter.add(nomField);
 		nomField.setFont(texte);
 		nomField.setText(contactsList.get(index).getNom());
-		nomField.setBounds(150, 170, 200, 25);
+		nomField.setBounds(150, 180, 200, 30);
 
 		panelCenter.add(numNatelField);
 		numNatelField.setFont(texte);
 		numNatelField.setText(contactsList.get(index).getNumNatel());
-		numNatelField.setBounds(150, 260, 200, 25);
+		numNatelField.setBounds(150, 260, 200, 30);
 
 		panelCenter.add(numProField);
 		numProField.setFont(texte);
 		numProField.setText(contactsList.get(index).getNumPro());
-		numProField.setBounds(150, 290, 200, 25);
+		numProField.setBounds(150, 300, 200, 30);
 
 		panelCenter.add(mailField);
 		mailField.setFont(texte);
 		mailField.setText(contactsList.get(index).getEmail());
-		mailField.setBounds(150, 380, 200, 25);
+		mailField.setBounds(150, 380, 200, 30);
 
 		// Ajout des boutons
 		panelCenter.add(cancel);
@@ -163,7 +163,7 @@ public class FrameDispContact extends FramePrincipale {
 		cancel.setContentAreaFilled(false);
 		cancel.setBorderPainted(false);
 		cancel.addActionListener(new TraitementCancel());
-		
+
 		panelCenter.add(delete);
 		delete.setBounds(panelCenter.getWidth() / 3, 500, panelCenter.getWidth() / 3, 70);
 		delete.setOpaque(true);
@@ -198,18 +198,16 @@ public class FrameDispContact extends FramePrincipale {
 			dispose();
 		}
 	}
-	
+
 	public class TraitementDelete implements ActionListener {
 		/**
 		 * comportement du bouton(delete),
 		 */
 		public void actionPerformed(ActionEvent e) {
 
-			
-			
 			Contacts.deleteContact(index);
 			System.out.println(index);
-			
+
 			JFrame contacts;
 			try {
 				contacts = new FrameContacts();

@@ -119,23 +119,23 @@ public class FrameAddContact extends FramePrincipale {
 
 		panelCenter.add(prenomField);
 		prenomField.setFont(texte);
-		prenomField.setBounds(150, 140, 200, 25);
+		prenomField.setBounds(150, 140, 200, 30);
 
 		panelCenter.add(nomField);
 		nomField.setFont(texte);
-		nomField.setBounds(150, 170, 200, 25);
+		nomField.setBounds(150, 180, 200, 30);
 
 		panelCenter.add(numNatelField);
 		numNatelField.setFont(texte);
-		numNatelField.setBounds(150, 260, 200, 25);
+		numNatelField.setBounds(150, 260, 200, 30);
 
 		panelCenter.add(numProField);
 		numProField.setFont(texte);
-		numProField.setBounds(150, 290, 200, 25);
+		numProField.setBounds(150, 300, 200, 30);
 
 		panelCenter.add(mailField);
 		mailField.setFont(texte);
-		mailField.setBounds(150, 380, 200, 25);
+		mailField.setBounds(150, 380, 200, 30);
 
 		// Ajout des boutons
 		panelCenter.add(cancel);
