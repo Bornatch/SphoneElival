@@ -206,6 +206,7 @@ public class FrameDispContact extends FramePrincipale {
 		public void actionPerformed(ActionEvent e) {
 
 			
+			
 			Contacts.deleteContact(index);
 			System.out.println(index);
 			
@@ -234,7 +235,7 @@ public class FrameDispContact extends FramePrincipale {
 			String numPro = numProField.getText();
 			String mail = mailField.getText();
 
-			Contacts nouveau = new Contacts(nom, prenom, numNatel, numPro, mail);
+			Contacts nouveau = new Contacts(prenom, nom, numNatel, numPro, mail);
 			Contacts.updateContact(nouveau, index);
 
 			JFrame contacts;

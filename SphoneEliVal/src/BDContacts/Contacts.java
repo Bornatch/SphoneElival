@@ -268,14 +268,21 @@ public class Contacts implements Serializable {
 
 			} catch (Exception e) {
 
+			} finally {
+				try {
+					fileIn.close();
+					buffIn.close();
+					objIn.close();
+				} catch (IOException e) {
+
+					e.printStackTrace();
+				}
 			}
 
 		}
 
 		// fermeture des stream
-		fileIn.close();
-		buffIn.close();
-		objIn.close();
+		
 
 		System.out.println("num des contacts : " + mesContacts.size());
 		return mesContacts;
