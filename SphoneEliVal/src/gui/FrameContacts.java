@@ -61,6 +61,7 @@ public class FrameContacts extends FramePrincipale {
 	Font ssTitre = new Font("helvetica", Font.BOLD, 15);
 	Font liste = new Font("helvetica", Font.BOLD, 20);
 
+	@SuppressWarnings("unchecked")
 	public FrameContacts() throws IOException {
 		
 		// ajout du titre
@@ -134,7 +135,7 @@ public class FrameContacts extends FramePrincipale {
 			JFrame displayContact = new FrameDispContact(index, contactsList);
 			displayContact.setVisible(true);
 			
-			contactsList.remove(index);
+			//contactsList.remove(index);
           
 		}
 

@@ -10,11 +10,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.nio.file.DirectoryNotEmptyException;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.function.ObjIntConsumer;
-
 
 public class Contacts implements Serializable {
 
@@ -22,7 +23,7 @@ public class Contacts implements Serializable {
 
 	// outils de traitement des données
 	private static File dossier = new File("./DataContact/");
-	private static File[] fichiers = dossier.listFiles();
+	private static File[] fichiers;
 	private static List<Contacts> contactsList = new ArrayList<Contacts>();
 
 	// outils du constructeur
@@ -31,7 +32,7 @@ public class Contacts implements Serializable {
 	private String Prenom;
 	private String numNatel;
 	private String Email;
-	private Photos Photo;
+	// private Photos Photo;
 	private String numProfessionel;
 	private String profilPicPath;
 
@@ -51,11 +52,6 @@ public class Contacts implements Serializable {
 		this.numNatel = numnatel;
 		this.numProfessionel = numprofessionel;
 		this.Email = email;
-
-	}
-
-	public Contacts(Photos photo) {
-		Photo = photo;
 
 	}
 
@@ -107,8 +103,23 @@ public class Contacts implements Serializable {
 	 */
 	public static void deleteContact(int index) {
 
-		fichiers[index].delete();
-		//contactsList.remove(index);
+		//fichiers = dossier.listFiles();
+		System.out.println(fichiers[index].getName());
+		//fichiers[index].delete();
+				// contactsList.remove(index);
+		Path path = fichiers[index].toPath();
+		
+		try {
+		    Files.delete(path);
+		} catch (NoSuchFileException x) {
+		    System.err.format("%s: no such" + " file or directory%n", path);
+		} catch (DirectoryNotEmptyException x) {
+		    System.err.format("%s not empty%n", path);
+		} catch (IOException x) {
+		    // File permission problems are caught here.
+		    System.err.println(x);
+		}
+		
 	}
 
 	/**
@@ -137,6 +148,8 @@ public class Contacts implements Serializable {
 		} finally {
 			try {
 				obfichier.close();
+				bfichier.close();
+				fichier.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -152,6 +165,7 @@ public class Contacts implements Serializable {
 	public void readObjectToList() {
 
 		ObjectInputStream objIn = null;
+		fichiers = dossier.listFiles();
 
 		for (int i = 0; i < fichiers.length; i++) {
 			try {
@@ -191,6 +205,7 @@ public class Contacts implements Serializable {
 		BufferedInputStream buffIn = null;
 		ObjectInputStream objIn = null;
 		// System.out.println(fichiers.length);
+		fichiers = dossier.listFiles();
 
 		for (int i = 0; i < fichiers.length; i++) {
 			try {
