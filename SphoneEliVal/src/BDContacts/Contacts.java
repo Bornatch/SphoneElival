@@ -108,6 +108,7 @@ public class Contacts implements Serializable {
 	public static void deleteContact(int index) {
 
 		fichiers[index].delete();
+		//contactsList.remove(index);
 	}
 
 	/**
