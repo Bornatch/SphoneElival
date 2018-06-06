@@ -65,8 +65,8 @@ public class FrameContacts extends FramePrincipale {
 	Font ssTitre = new Font("helvetica", Font.BOLD, 15);
 	Font liste = new Font("helvetica", Font.BOLD, 20);
 
+	@SuppressWarnings("unchecked")
 	public FrameContacts() throws IOException {
-
 		
 		
 		// ajout du titre

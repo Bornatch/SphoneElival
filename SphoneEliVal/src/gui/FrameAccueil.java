@@ -70,6 +70,8 @@ public class FrameAccueil extends FramePrincipale {
 		contacts.setHorizontalTextPosition(SwingConstants.CENTER);
 
 		contacts.addActionListener(new TraitementContactsList());
+		
+		
 
 		// paramètres
 		fondEcran.add(settings);
