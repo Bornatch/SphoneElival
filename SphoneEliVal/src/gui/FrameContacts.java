@@ -62,7 +62,6 @@ public class FrameContacts extends FramePrincipale {
 	Font liste = new Font("helvetica", Font.BOLD, 20);
 
 	public FrameContacts() throws IOException {
-
 		
 		// ajout du titre
 		this.add(titreLabel);
