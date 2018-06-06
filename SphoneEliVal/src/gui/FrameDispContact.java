@@ -23,7 +23,7 @@ import BDContacts.Contacts;
 /**
  * Frame de modification des contacts, inspirée de FrameAddContact
  * 
- * @author Bornatch
+ *
  *
  */
 @SuppressWarnings("serial")
@@ -205,7 +205,9 @@ public class FrameDispContact extends FramePrincipale {
 		 */
 		public void actionPerformed(ActionEvent e) {
 
+			
 			Contacts.deleteContact(index);
+			System.out.println(index);
 			
 			JFrame contacts;
 			try {

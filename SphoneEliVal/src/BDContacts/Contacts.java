@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.function.ObjIntConsumer;
 
 
+
 public class Contacts implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -34,6 +35,17 @@ public class Contacts implements Serializable {
 	private Photos Photo;
 	private String numProfessionel;
 	private String profilPicPath;
+	
+	// variable index du contact selectionné
+    private  int Index ;
+    
+	public int getIndex() {
+		return Index;
+	}
+
+	public void setIndex(int index) {
+		Index = index;
+	}
 
 	/**
 	 * Constructeur de contacts, utilisé par la frameAddContact btn save
@@ -97,18 +109,30 @@ public class Contacts implements Serializable {
 	public static void updateContact(Contacts c, int index) {
 		System.out.println("entre dans update");
 		deleteContact(index);
+		System.out.println(index);
 		AddContact(c);
 	}
 
 	/**
-	 * Suppression du contact à l'index index de fichiers[]
+	 * Suppression du contact à l'index de fichiers[]
 	 * 
 	 * @param index
 	 */
 	public static void deleteContact(int index) {
 
-		fichiers[index].delete();
-		//contactsList.remove(index);
+		for (int i = 0; i < fichiers.length; i++) {
+				fichiers[index].delete();
+				
+			}
+		
+		/**for (int i = 0; i < fichiers.length; i++) {
+			Contacts c= (Contacts)fichiers[i];
+			 Contacts.serializeObjectFile();
+		}*/
+		
+		System.out.println(fichiers.length);
+		
+		//contactsList.remove(index);// supprimer le contact à l'index
 	}
 
 	/**
@@ -117,17 +141,17 @@ public class Contacts implements Serializable {
 	 * 
 	 * @param contact
 	 */
-	public static void serializeObject(Contacts c) {
+	public static void serializeObject(Contacts nouveau) {
 
 		FileOutputStream fichier = null;
 		BufferedOutputStream bfichier = null;
 		ObjectOutputStream obfichier = null;
 		try {
-			fichier = new FileOutputStream("./DataContact/" + c.Nom + c.Prenom + ".ser");
+			fichier = new FileOutputStream("./DataContact/" + nouveau.Nom + nouveau.Prenom + ".ser");
 
 			bfichier = new BufferedOutputStream(fichier);
 			obfichier = new ObjectOutputStream(bfichier);
-			obfichier.writeObject(c);
+			obfichier.writeObject(nouveau);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -144,7 +168,39 @@ public class Contacts implements Serializable {
 		}
 	}
 
-	// test
+	/**
+	 * Meth pour sérialiser le fichier après delete et modif
+	 *
+	 */
+	
+	public static void serializeObjectFile(File f) {
+
+		FileOutputStream fichier = null;
+		BufferedOutputStream bfichier = null;
+		ObjectOutputStream obfichier = null;
+		try {
+			fichier = new FileOutputStream("./DataContact/" + f.getClass()+".ser");
+
+			bfichier = new BufferedOutputStream(fichier);
+			obfichier = new ObjectOutputStream(bfichier);
+			obfichier.writeObject(f);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				obfichier.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
 
 	/**
 	 * Instancie la liste de contacts en désérialisant les fichiers
@@ -174,17 +230,19 @@ public class Contacts implements Serializable {
 		}
 
 		setContactsList(contactsList);
+		
 
 	}
 
 	/**
 	 * Meth pour désérializer les contacts, crée une liste de contacts
-	 *
-	 */
+	* 
+	*/
 	public static List<Contacts> deserializeContacts() throws IOException {
 
 		// liste de réception des contacts
 		List<Contacts> mesContacts = new ArrayList<Contacts>();
+		
 
 		// Création et ouverture des stream de lecture
 		FileInputStream fileIn = null;
@@ -213,7 +271,7 @@ public class Contacts implements Serializable {
 		buffIn.close();
 		objIn.close();
 
-		// System.out.println("mescontacts : " + mesContacts.size());
+		System.out.println("num des contacts : " + mesContacts.size());
 		return mesContacts;
 
 	}

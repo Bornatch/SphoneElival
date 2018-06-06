@@ -32,11 +32,15 @@ import gui.FrameGallerie.TraitementImage;
 
 /**
  * Affichage de contacts et bouton d'ajout
- * @author Bornatch
+ * 
  *
  */
 @SuppressWarnings("serial")
 public class FrameContacts extends FramePrincipale {
+	
+	
+
+	
 
 	// création du panel
 	private JPanel panelCenter = new JPanel();
@@ -64,6 +68,7 @@ public class FrameContacts extends FramePrincipale {
 	public FrameContacts() throws IOException {
 
 		
+		
 		// ajout du titre
 		this.add(titreLabel);
 		titreLabel.setFont(titre);
@@ -89,11 +94,13 @@ public class FrameContacts extends FramePrincipale {
 		panelCenter.setBounds(21, 205, 378, 570);
 
 		// Création du contenu avec la JList
+		contactsListToString.clear();        //vide la liste
+		
 		contactsList = Contacts.deserializeContacts();
 
 		for (Iterator iterator = contactsList.iterator(); iterator.hasNext();) {
 			Contacts contacts = (Contacts) iterator.next();
-			contactsListToString.add(contacts.ToString());
+			contactsListToString.add(contacts.ToString());//
 		}
 
 		// Affichege de la jlist de contact
@@ -134,9 +141,8 @@ public class FrameContacts extends FramePrincipale {
 			int index = e.getFirstIndex();
 			JFrame displayContact = new FrameDispContact(index, contactsList);
 			displayContact.setVisible(true);
+			System.out.println(index);
 			
-			contactsList.remove(index);
-          
 		}
 
 	}

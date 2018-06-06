@@ -22,7 +22,7 @@ import BDContacts.Contacts;
 /**
  * Frame d'ajout et de modification des contacts *
  * 
- * @author Bornatch
+ * 
  *
  */
 @SuppressWarnings("serial")
