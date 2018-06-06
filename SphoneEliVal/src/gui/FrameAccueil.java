@@ -71,7 +71,7 @@ public class FrameAccueil extends FramePrincipale {
 
 		contacts.addActionListener(new TraitementContactsList());
 		
-		System.out.println();
+		
 
 		// paramètres
 		fondEcran.add(settings);
