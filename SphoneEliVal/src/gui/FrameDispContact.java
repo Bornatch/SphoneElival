@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
-import bdContactsMain.Contacts;
+import BDContacts.Contacts;
 
 /**
  * Frame de modification des contacts, inspirée de FrameAddContact

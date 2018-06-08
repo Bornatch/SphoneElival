@@ -1,4 +1,4 @@
-package bdContactsMain;
+package BDContacts;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -105,7 +105,7 @@ public class Contacts implements Serializable {
 	public static void updateContact(Contacts c, int index) {
 		System.out.println("entre dans update");
 		deleteContact(index);
-		System.out.println(index);
+		//System.out.println(index);
 		AddContact(c);
 	}
 
@@ -269,7 +269,7 @@ public class Contacts implements Serializable {
 			} catch (Exception e) {
 
 			} finally {
-				try {
+				try {                // fermeture des streams
 					fileIn.close();
 					buffIn.close();
 					objIn.close();
@@ -281,7 +281,7 @@ public class Contacts implements Serializable {
 
 		}
 
-		// fermeture des stream
+		
 		
 
 		System.out.println("num des contacts : " + mesContacts.size());

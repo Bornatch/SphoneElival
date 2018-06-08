@@ -1,4 +1,4 @@
-package bdContactsMain;
+package BDContacts;
 
 public class Photos {
 
