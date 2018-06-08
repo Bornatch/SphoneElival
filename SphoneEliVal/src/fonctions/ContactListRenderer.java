@@ -6,7 +6,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
-import BDContacts.Contacts;
+import bdContactsMain.Contacts;
 
 public class ContactListRenderer extends JPanel implements ListCellRenderer<Contacts> {
 

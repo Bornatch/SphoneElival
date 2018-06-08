@@ -1,4 +1,4 @@
-package BDContacts;
+package bdContactsMain;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -120,7 +120,7 @@ public class Contacts implements Serializable {
 		//fichiers = dossier.listFiles();
 		System.out.println(fichiers[index].getName());
 		//fichiers[index].delete();
-				// contactsList.remove(index);
+		// contactsList.remove(index);
 		Path path = fichiers[index].toPath();
 		
 		try {

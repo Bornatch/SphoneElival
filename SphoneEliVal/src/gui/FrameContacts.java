@@ -28,7 +28,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import BDContacts.Contacts;
+import bdContactsMain.Contacts;
 import gui.FrameGallerie.TraitementImage;
 
 /**
