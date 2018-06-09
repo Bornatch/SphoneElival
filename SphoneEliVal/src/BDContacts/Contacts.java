@@ -87,8 +87,7 @@ public class Contacts implements Serializable {
 	public void afficherList() { // affiche la liste
 		for (int i = 0; i < contactsList.size(); i++) {
 			Contacts temp = (Contacts) contactsList.get(i);
-			// System.out.println(temp.getPrenom()+" "+temp.getNom());//autre façon
-			// d'afficher
+			System.out.println(temp.getPrenom()+" "+temp.getNom());  //autre façon d'afficher
 
 			System.out.println(temp);// Affichage avec la meth ToString modifié
 		}
