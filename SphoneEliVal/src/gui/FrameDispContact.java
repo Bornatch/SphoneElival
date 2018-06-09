@@ -53,8 +53,8 @@ public class FrameDispContact extends FramePrincipale {
 	private JTextField mailField = new JTextField("mail");
 
 	// Bouton d'image de profil
-	JButton profilPic = new JButton(new ImageIcon("./icon/contact.png"));
-	static ImageIcon photo;
+	JButton profilPic = new JButton(new ImageIcon("./icon/user.png"));
+    static ImageIcon photo;
 
 	// Les boutons : sauvegarde et retour à Contacts
 	private JButton cancel = new JButton(new ImageIcon("./icon/cancel.png"));
@@ -276,6 +276,14 @@ public class FrameDispContact extends FramePrincipale {
 			dispose();
 
 		}
+	}
+
+	public ImageIcon getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(ImageIcon photo) {
+		this.photo = photo;
 	}
 
 }

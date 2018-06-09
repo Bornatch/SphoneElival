@@ -63,11 +63,10 @@ public class FrameGallerieProfilChooser extends FramePrincipale {
 
 		int j = 0;
 		// Créer une liste des Imagesicon, le if retire le fichier thumbs
-		for (int i = 0; i < fichier.length ; i++) {
-			
+		for (int i = 0; i < fichier.length; i++) {
+
 			if (!fichier[i].getName().equals("Thumbs.db")) {
 
-				
 				// redimmensionnement de l'image
 				ImageIcon origine = new ImageIcon(fichier[i].getPath());
 				miniatures.add(new JButton(new ImageIcon(
@@ -82,7 +81,6 @@ public class FrameGallerieProfilChooser extends FramePrincipale {
 				miniatures.get(j).addActionListener(new TraitementImage());
 				j++;
 			}
-			
 
 		}
 
