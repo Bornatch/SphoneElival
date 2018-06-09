@@ -145,7 +145,7 @@ public class FrameGallerie extends FramePrincipale {
 					// TODO: handle exception
 				}
 
-				System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
+				System.out.println("getSelectedFile() : " + chooser.getSelectedFile());//
 				
 			} else {
 				System.out.println("Pas de fichier séléctioné ");
