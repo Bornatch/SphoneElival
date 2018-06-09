@@ -21,6 +21,7 @@ import javax.swing.JScrollPane;
 import gui.FrameGallerie.TraitementImage;
 
 public class FrameGallerieProfilChooser extends FramePrincipale {
+	
 
 	// création du panel
 	private JPanel panelCenter = new JPanel();
@@ -100,7 +101,7 @@ public class FrameGallerieProfilChooser extends FramePrincipale {
 			int index = Integer.parseInt(((JButton) e.getSource()).getName());
 			try {
 				FrameAddContact.photo = new ImageIcon(fichier[index].getPath());
-				FrameDispContact.photo = new ImageIcon(fichier[index].getPath());
+				FrameDispContact.photo= new ImageIcon(fichier[index].getPath());
 			} catch (Exception e2) {
 				// TODO: handle exception
 				JOptionPane fail = new JOptionPane("Erreur lors de la sélection");
