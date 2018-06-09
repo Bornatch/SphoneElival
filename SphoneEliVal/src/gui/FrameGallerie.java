@@ -11,11 +11,15 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -67,21 +71,28 @@ public class FrameGallerie extends FramePrincipale {
 		panelCenter.add(scrollPane, BorderLayout.CENTER);
 		scrollPane.setBounds(10, 10, 358, 510);
 
-		// Créer une liste des Imagesicon, le -1 retire le fichier thumbs
-		for (int i = 0; i < fichier.length - 1; i++) {
+		int j = 0;
+		// Créer une liste des Imagesicon, le if retire le fichier thumbs
+		for (int i = 0; i < fichier.length ; i++) {
+			
+			if (!fichier[i].getName().equals("Thumbs.db")) {
 
-			// redimmensionnement de l'image
-			ImageIcon origine = new ImageIcon(fichier[i].getPath());
-			miniatures.add(new JButton(new ImageIcon(
-					origine.getImage().getScaledInstance(panelCenter.getWidth() / 2, 150, Image.SCALE_FAST))));
+				
+				// redimmensionnement de l'image
+				ImageIcon origine = new ImageIcon(fichier[i].getPath());
+				miniatures.add(new JButton(new ImageIcon(
+						origine.getImage().getScaledInstance(panelCenter.getWidth() / 2, 150, Image.SCALE_FAST))));
 
-			// ajout de chaque miniature
-			panelScroll.add(miniatures.get(i));
-			miniatures.get(i).setPreferredSize(new Dimension(150, 120));
+				// ajout de chaque miniature
+				panelScroll.add(miniatures.get(j));
+				miniatures.get(j).setPreferredSize(new Dimension(150, 120));
 
-			// Ajout du numéro d'index pour gestion des events
-			miniatures.get(i).setName("" + i);
-			miniatures.get(i).addActionListener(new TraitementImage());
+				// Ajout du numéro d'index pour gestion des events
+				miniatures.get(j).setName("" + i);
+				miniatures.get(j).addActionListener(new TraitementImage());
+				j++;
+			}
+			
 
 		}
 
@@ -97,10 +108,12 @@ public class FrameGallerie extends FramePrincipale {
 
 	}
 
+	/**
+	 * @author Bornatch comportement du bouton d'images,
+	 *
+	 */
 	public class TraitementImage implements ActionListener {
-		/**
-		 * comportement du bouton d'images,
-		 */
+
 		public void actionPerformed(ActionEvent e) {
 
 			JFrame image = new FrameImage(fichier, Integer.parseInt(((JButton) e.getSource()).getName()));
@@ -111,10 +124,12 @@ public class FrameGallerie extends FramePrincipale {
 		}
 	}
 
+	/**
+	 * @author Bornatch comportement du bouton d'ajout d'image, recherche une image
+	 *         dans l'ordi grace au JFileChooser et la rajoute dans le fichier
+	 *         Gallerie
+	 */
 	public class TraitementAjoutPhoto implements ActionListener {
-		/**
-		 * comportement du bouton d'images,
-		 */
 
 		JFileChooser chooser;
 
@@ -122,6 +137,12 @@ public class FrameGallerie extends FramePrincipale {
 		String path;
 		JLabel photos;
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			int result;
 			chooser = new JFileChooser();
@@ -130,41 +151,51 @@ public class FrameGallerie extends FramePrincipale {
 
 			if (chooser.showOpenDialog(panelCenter) == JFileChooser.APPROVE_OPTION) {
 				File file = chooser.getSelectedFile();
+				InputStream in = null;
+				OutputStream out = null;
 				try {
-//					image = ImageIO.read(file);
-//					path = file.getPath();
-//					photos = new JLabel();
-//					photos.setBounds(100, 10, scale(image, 25).getWidth(null), scale(image, 25).getHeight(null));
-//				//	https://www.developpez.net/forums/d318372/java/interfaces-graphiques-java/awt-swing/jfilechooser-ouvrir-enregistrer-fichier-disque-dur/
-//					photos.setIcon(new ImageIcon(scale(image, 25)));
-//					photos.setIcon(new ImageIcon(image));
-//					ImageIcon ajoutee = new ImageIcon(image);
-//					miniatures.add(new JButton(ajoutee));
 
-				} catch (Exception e2) {
-					// TODO: handle exception
+					in = new FileInputStream(file);
+
+					// Destination
+					File dst = new File("./Gallerie/" + file.getName());
+
+					// Création d'un nouveau fichier
+					dst.createNewFile();
+					out = new FileOutputStream(dst);
+
+					// Transfert
+					byte[] buf = new byte[1024];
+					int len;
+					while ((len = in.read(buf)) > 0) {
+						out.write(buf, 0, len);
+					}
+
+				} catch (FileNotFoundException e2) {
+
+				} catch (IOException e3) {
+
+				} finally {
+					// Fermeture des flux
+
+					try {
+						in.close();
+						out.close();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+
+					JFrame gallerie = new FrameGallerie();
+					gallerie.setVisible(true);
+
+					dispose();
 				}
 
-				System.out.println("getSelectedFile() : " + chooser.getSelectedFile());//
-				
 			} else {
 				System.out.println("Pas de fichier séléctioné ");
 			}
 		}
-	}
-
-	public static BufferedImage read(File input) throws IOException {
-		return image;
-	}
-
-	public static BufferedImage scale(BufferedImage img, double scaleValue) {
-		
-		AffineTransform tx = new AffineTransform();
-		tx.scale(scaleValue, scaleValue);
-		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
-		BufferedImage imgNew = new BufferedImage((int) (img.getWidth() * scaleValue),
-				(int) (img.getHeight() * scaleValue), img.getType());
-		return op.filter(img, imgNew);
 	}
 
 }

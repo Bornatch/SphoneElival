@@ -61,21 +61,28 @@ public class FrameGallerieProfilChooser extends FramePrincipale {
 		panelCenter.add(scrollPane, BorderLayout.CENTER);
 		scrollPane.setBounds(10, 10, 358, 510);
 
-		// Créer une liste des Imagesicon, le -1 retire le fichier thumbs
-		for (int i = 0; i < fichier.length - 1; i++) {
+		int j = 0;
+		// Créer une liste des Imagesicon, le if retire le fichier thumbs
+		for (int i = 0; i < fichier.length ; i++) {
+			
+			if (!fichier[i].getName().equals("Thumbs.db")) {
 
-			// redimmensionnement de l'image
-			ImageIcon origine = new ImageIcon(fichier[i].getPath());
-			miniatures.add(new JButton(new ImageIcon(
-					origine.getImage().getScaledInstance(panelCenter.getWidth() / 2, 150, Image.SCALE_FAST))));
+				
+				// redimmensionnement de l'image
+				ImageIcon origine = new ImageIcon(fichier[i].getPath());
+				miniatures.add(new JButton(new ImageIcon(
+						origine.getImage().getScaledInstance(panelCenter.getWidth() / 2, 150, Image.SCALE_FAST))));
 
-			// ajout de chaque miniature
-			panelScroll.add(miniatures.get(i));
-			miniatures.get(i).setPreferredSize(new Dimension(150, 120));
+				// ajout de chaque miniature
+				panelScroll.add(miniatures.get(j));
+				miniatures.get(j).setPreferredSize(new Dimension(150, 120));
 
-			// Ajout du numéro d'index pour gestion des events
-			miniatures.get(i).setName("" + i);
-			miniatures.get(i).addActionListener(new TraitementImage());
+				// Ajout du numéro d'index pour gestion des events
+				miniatures.get(j).setName("" + i);
+				miniatures.get(j).addActionListener(new TraitementImage());
+				j++;
+			}
+			
 
 		}
 
@@ -105,7 +112,6 @@ public class FrameGallerieProfilChooser extends FramePrincipale {
 				// TODO: handle exception
 				JOptionPane fail = new JOptionPane("Erreur lors de la sélection");
 			}
-			
 
 			dispose();
 		}
