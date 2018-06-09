@@ -8,5 +8,6 @@ public class Photos {
 	
 	public Photos () {
 		
+		
 	}
 }

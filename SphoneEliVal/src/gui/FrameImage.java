@@ -29,7 +29,9 @@ public class FrameImage extends FramePrincipale {
 	private JButton next = new JButton(new ImageIcon("./icon/next.png"));
 	private JButton cancel = new JButton(new ImageIcon("./icon/cancel.png"));
 	private JButton back = new JButton(new ImageIcon("./icon/back.png"));
-
+   
+    
+    
 	public FrameImage(File[] fichier, int index) {
 		this.fichier = fichier;
 		this.index = index;
@@ -77,6 +79,8 @@ public class FrameImage extends FramePrincipale {
 		cancel.setBorderPainted(false);
 		cancel.addActionListener(new TraitementCancel());
 
+		
+		
 	}
 
 	/**
@@ -149,7 +153,8 @@ public class FrameImage extends FramePrincipale {
 
 		}
 	}
-
+	
+	
 }
 
 // panel d'affichage des boutons
