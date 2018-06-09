@@ -131,21 +131,22 @@ public class FrameGallerie extends FramePrincipale {
 			if (chooser.showOpenDialog(panelCenter) == JFileChooser.APPROVE_OPTION) {
 				File file = chooser.getSelectedFile();
 				try {
-					image = ImageIO.read(file);
-					path = file.getPath();
-					photos = new JLabel();
-					photos.setBounds(100, 10, scale(image, 25).getWidth(null), scale(image, 25).getHeight(null));
-				//	https://www.developpez.net/forums/d318372/java/interfaces-graphiques-java/awt-swing/jfilechooser-ouvrir-enregistrer-fichier-disque-dur/
-					photos.setIcon(new ImageIcon(scale(image, 25)));
-					photos.setIcon(new ImageIcon(image));
-					ImageIcon ajoutee = new ImageIcon(image);
-					miniatures.add(new JButton(ajoutee));
+//					image = ImageIO.read(file);
+//					path = file.getPath();
+//					photos = new JLabel();
+//					photos.setBounds(100, 10, scale(image, 25).getWidth(null), scale(image, 25).getHeight(null));
+//				//	https://www.developpez.net/forums/d318372/java/interfaces-graphiques-java/awt-swing/jfilechooser-ouvrir-enregistrer-fichier-disque-dur/
+//					photos.setIcon(new ImageIcon(scale(image, 25)));
+//					photos.setIcon(new ImageIcon(image));
+//					ImageIcon ajoutee = new ImageIcon(image);
+//					miniatures.add(new JButton(ajoutee));
 
 				} catch (Exception e2) {
 					// TODO: handle exception
 				}
 
 				System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
+				
 			} else {
 				System.out.println("Pas de fichier séléctioné ");
 			}
