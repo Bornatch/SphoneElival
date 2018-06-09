@@ -25,7 +25,7 @@ class ContactsTest {
 	
 	@Test
 	void testContacts() { //Methode ok
-		 Contacts c=new Contacts("Eli","Bitschnau","0781254565","0782540210","test@hevs.ch");
+		 Contacts c=new Contacts("Eli","Bitschnau","0781254565","0782540210","test@hevs.ch", null);
 		 
 		 //Lors de l'instantiation le contructeur test déjà que les paramètres soient en String, test implicite
 		 // System.out.println("++++"+c);
@@ -38,7 +38,7 @@ class ContactsTest {
 	@Test
 	void testafficherList() {
 		
-		Contacts c =new Contacts ("Eli","Bitschnau","0781254565","0782540210","test@hevs.ch");
+		Contacts c =new Contacts ("Eli","Bitschnau","0781254565","0782540210","test@hevs.ch", null);
 		List<Contacts> contactsList = new ArrayList<Contacts>();
 		
 		for (int i = 0; i < 5; i++) { //Remplir la list
