@@ -94,8 +94,7 @@ public class Contacts implements Serializable {
 	public void afficherList() { // affiche la liste
 		for (int i = 0; i < contactsList.size(); i++) {
 			Contacts temp = (Contacts) contactsList.get(i);
-			// System.out.println(temp.getPrenom()+" "+temp.getNom());//autre façon
-			// d'afficher
+			System.out.println(temp.getPrenom()+" "+temp.getNom());  //autre façon d'afficher
 
 			System.out.println(temp);// Affichage avec la meth ToString modifié
 		}
@@ -112,7 +111,7 @@ public class Contacts implements Serializable {
 	public static void updateContact(Contacts c, int index) {
 		System.out.println("entre dans update");
 		deleteContact(index);
-		System.out.println(index);
+		//System.out.println(index);
 		AddContact(c);
 	}
 
@@ -126,6 +125,7 @@ public class Contacts implements Serializable {
 		// fichiers = dossier.listFiles();
 		System.out.println(fichiers[index].getName());
 		// fichiers[index].delete();
+
 		// contactsList.remove(index);
 		Path path = fichiers[index].toPath();
 
@@ -264,7 +264,7 @@ public class Contacts implements Serializable {
 			} catch (Exception e) {
 
 			} finally {
-				try {
+				try {                // fermeture des streams
 					fileIn.close();
 					buffIn.close();
 					objIn.close();
@@ -276,7 +276,7 @@ public class Contacts implements Serializable {
 
 		}
 
-		// fermeture des stream
+
 
 		System.out.println("num des contacts : " + mesContacts.size());
 		return mesContacts;
