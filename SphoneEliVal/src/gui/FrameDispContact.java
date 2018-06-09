@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 import BDContacts.Contacts;
+import gui.FrameAddContact.TraitementProfilPic;
 
 /**
  * Frame de modification des contacts, inspirée de FrameAddContact
@@ -50,6 +51,10 @@ public class FrameDispContact extends FramePrincipale {
 	private JFormattedTextField numNatelField;
 	JFormattedTextField numProField;
 	private JTextField mailField = new JTextField("mail");
+
+	// Bouton d'image de profil
+	JButton profilPic = new JButton(new ImageIcon("./icon/contact.png"));
+	static ImageIcon photo;
 
 	// Les boutons : sauvegarde et retour à Contacts
 	private JButton cancel = new JButton(new ImageIcon("./icon/cancel.png"));
@@ -93,68 +98,74 @@ public class FrameDispContact extends FramePrincipale {
 		}
 
 		// Ajout des labels
-
-		panelCenter.add(imageLabel);
-		imageLabel.setBounds(20, 5, 100, 100);
-
 		panelCenter.add(nomTitreLabel);
 		nomTitreLabel.setFont(ssTitre);
-		nomTitreLabel.setBounds(20, 100, 100, 40);
+		nomTitreLabel.setBounds(20, 150, 100, 40);
 
 		panelCenter.add(prenomLabel);
 		prenomLabel.setFont(texte);
-		prenomLabel.setBounds(20, 140, 100, 30);
+		prenomLabel.setBounds(20, 190, 100, 30);
 
 		panelCenter.add(nomLabel);
 		nomLabel.setFont(texte);
-		nomLabel.setBounds(20, 170, 100, 50);
+		nomLabel.setBounds(20, 220, 100, 50);
 
 		panelCenter.add(numTitrelLabel);
 		numTitrelLabel.setFont(ssTitre);
-		numTitrelLabel.setBounds(20, 220, 100, 40);
+		numTitrelLabel.setBounds(20, 270, 100, 40);
 
 		panelCenter.add(numNatelLabel);
 		numNatelLabel.setFont(texte);
-		numNatelLabel.setBounds(20, 260, 100, 30);
+		numNatelLabel.setBounds(20, 310, 100, 30);
 
 		panelCenter.add(numProLabel);
 		numProLabel.setFont(texte);
-		numProLabel.setBounds(20, 290, 100, 50);
+		numProLabel.setBounds(20, 340, 100, 50);
 
 		panelCenter.add(diversLabel);
 		diversLabel.setFont(ssTitre);
-		diversLabel.setBounds(20, 340, 100, 40);
+		diversLabel.setBounds(20, 390, 100, 40);
 
 		panelCenter.add(mailLabel);
 		mailLabel.setFont(texte);
-		mailLabel.setBounds(20, 380, 100, 30);
+		mailLabel.setBounds(20, 430, 100, 30);
+
+		// Ajout de l'icon du profil
+		panelCenter.add(profilPic);
+		if (contactsList.get(index).getProfilPicPath() != null)
+			profilPic.setIcon(contactsList.get(index).getProfilPicPath());
+		profilPic.setContentAreaFilled(false);
+		profilPic.setBorderPainted(false);
+		profilPic.setBounds(21, 5, 150, 150);
+
+		profilPic.addActionListener(new TraitementProfilPic());
 
 		// Ajout des textField
 
 		panelCenter.add(prenomField);
 		prenomField.setFont(texte);
 		prenomField.setText(contactsList.get(index).getPrenom());
-		prenomField.setBounds(150, 140, 200, 30);
+		prenomField.setBounds(150, 190, 200, 30);
 
 		panelCenter.add(nomField);
 		nomField.setFont(texte);
 		nomField.setText(contactsList.get(index).getNom());
-		nomField.setBounds(150, 180, 200, 30);
+		nomField.setBounds(150, 230, 200, 30);
 
 		panelCenter.add(numNatelField);
 		numNatelField.setFont(texte);
 		numNatelField.setText(contactsList.get(index).getNumNatel());
-		numNatelField.setBounds(150, 260, 200, 30);
+		numNatelField.setBounds(150, 310, 200, 30);
 
 		panelCenter.add(numProField);
 		numProField.setFont(texte);
 		numProField.setText(contactsList.get(index).getNumPro());
-		numProField.setBounds(150, 300, 200, 30);
+		numProField.setBounds(150, 350, 200, 30);
 
 		panelCenter.add(mailField);
 		mailField.setFont(texte);
 		mailField.setText(contactsList.get(index).getEmail());
-		mailField.setBounds(150, 380, 200, 30);
+		mailField.setBounds(150, 430, 200, 30);
 
 		// Ajout des boutons
 		panelCenter.add(cancel);
@@ -221,6 +232,22 @@ public class FrameDispContact extends FramePrincipale {
 		}
 	}
 
+	public class TraitementProfilPic implements ActionListener {
+		/**
+		 * comportement du bouton de l'image du profil,
+		 */
+		public void actionPerformed(ActionEvent e) {
+
+			FrameGallerieProfilChooser gallerie;
+			gallerie = new FrameGallerieProfilChooser();
+
+			profilPic.setIcon(photo);
+			// gallerie.setVisible(true);
+
+			// dispose();
+		}
+	}
+
 	public class TraitementSave implements ActionListener {
 		/**
 		 * comportement du bouton save
@@ -232,8 +259,9 @@ public class FrameDispContact extends FramePrincipale {
 			String numNatel = numNatelField.getText();
 			String numPro = numProField.getText();
 			String mail = mailField.getText();
+			ImageIcon icon = photo;
 
-			Contacts nouveau = new Contacts(prenom, nom, numNatel, numPro, mail);
+			Contacts nouveau = new Contacts(prenom, nom, numNatel, numPro, mail, icon);
 			Contacts.updateContact(nouveau, index);
 
 			JFrame contacts;

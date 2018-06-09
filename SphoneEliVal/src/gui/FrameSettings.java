@@ -31,6 +31,12 @@ public class FrameSettings extends FramePrincipale {
 	private JLabel menulabel = new JLabel("<html>Couleur des menus<br> du smartphone<html>");
 	private JLabel imgFndLabel = new JLabel("<html>Fond d'écran<br> du smartphone<html>");
 
+	// la combobox de choix d'image du fond d'écran d'accueil
+	private ImageIcon[] imgFndChoix = { new ImageIcon("./Gallerie/fndEcran1.jpg"), new ImageIcon("./Gallerie/img1.jpg"),
+			new ImageIcon("./Gallerie/img2.jpg"), new ImageIcon("./Gallerie/img3.jpg"),
+			new ImageIcon("./Gallerie/img4.jpg"), new ImageIcon("./Gallerie/img5.jpg") };
+	private JComboBox<ImageIcon> imgFndCombo = new JComboBox<ImageIcon>(imgFndChoix);
+
 	// la combobox de choix de couleurs des bordures
 	private Color[] colorList = { Color.BLACK, Color.blue, Color.CYAN, Color.DARK_GRAY, Color.LIGHT_GRAY, Color.GREEN,
 			Color.WHITE, Color.YELLOW };
@@ -40,12 +46,6 @@ public class FrameSettings extends FramePrincipale {
 	private Color[] colorListMenu = { Color.BLACK, Color.blue, Color.CYAN, Color.DARK_GRAY, Color.LIGHT_GRAY,
 			Color.pink, Color.WHITE, Color.orange };
 	private JComboBox<Color> menuCombo = new JComboBox<Color>(colorListMenu);
-
-	// la combobox de choix d'image du fond d'écran d'accueil
-	private ImageIcon[] imgFndChoix = { new ImageIcon("./Gallerie/fndEcran1.jpg"), new ImageIcon("./Gallerie/img1.jpg"),
-			new ImageIcon("./Gallerie/img2.jpg"), new ImageIcon("./Gallerie/img3.jpg"),
-			new ImageIcon("./Gallerie/img4.jpg"), new ImageIcon("./Gallerie/img5.jpg") };
-	private JComboBox<ImageIcon> imgFndCombo = new JComboBox<ImageIcon>(imgFndChoix);
 
 	// boutons de validation
 	private JButton valide = new JButton("Valider");
@@ -77,7 +77,7 @@ public class FrameSettings extends FramePrincipale {
 		imgFndLabel.setFont(ssTitre);
 		imgFndLabel.setBounds(20, 70, 180, 50);
 
-		// Ajout du combobox des couleurs d'image de fond d'écan
+		// Ajout du combobox d'image de fond d'écan
 		panelCenter.add(imgFndCombo);
 		imgFndCombo.setFont(texte);
 		imgFndCombo.setRenderer(new ImgComboRenderer());

@@ -16,7 +16,6 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -29,6 +28,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import BDContacts.Contacts;
+import fonctions.ContactListRenderer;
 import gui.FrameGallerie.TraitementImage;
 
 /**
@@ -56,7 +56,6 @@ public class FrameContacts extends FramePrincipale {
 
 	// bouton nouveau contact
 	private JButton addContact = new JButton(new ImageIcon("./icon/addContact.png"));
-	JFileChooser chooser;
 
 	// Déclaration des polices
 	Font titre = new Font("helvetica", Font.BOLD, 25);
@@ -85,7 +84,6 @@ public class FrameContacts extends FramePrincipale {
 		addContact.addActionListener(new TraitementAddContact());
 
 		// ajout de panel de présentation des contacts
-
 		panelCenter.setBackground(super.getBackground());
 		panelCenter.setLayout(new GridLayout(0, 1, 10, 10));
 		panelCenter.setBounds(21, 205, 378, 570);
@@ -100,20 +98,21 @@ public class FrameContacts extends FramePrincipale {
 			contactsListToString.add(contacts.ToString());//
 		}
 
+		// mise du panel dans un scrollPane
+		scrollPane = new JScrollPane(panelCenter);
+		this.add(scrollPane, BorderLayout.CENTER);
+		scrollPane.setBounds(21, 205, 378, 510);
+
 		// Affichege de la jlist de contact
 		jList = new JList(contactsListToString.toArray());
 		jList.setBorder(new EmptyBorder(10, 10, 10, 10));
 		jList.setFixedCellHeight(45);
 		jList.setFont(liste);
-		// jList.setCellRenderer(new ContactListRenderer());
+	
+		//jList.setCellRenderer(new ContactListRenderer());h
 		panelCenter.add(jList);
 
 		jList.addListSelectionListener(new TraitementList());
-
-		// mise du panel dans un scrollPane
-		scrollPane = new JScrollPane(panelCenter);
-		this.add(scrollPane, BorderLayout.CENTER);
-		scrollPane.setBounds(21, 205, 378, 570);
 
 	}
 
