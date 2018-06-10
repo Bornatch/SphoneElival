@@ -278,12 +278,5 @@ public class FrameDispContact extends FramePrincipale {
 		}
 	}
 
-	public ImageIcon getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(ImageIcon photo) {
-		this.photo = photo;
-	}
-
+	
 }

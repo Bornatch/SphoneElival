@@ -101,7 +101,7 @@ public class FrameGallerieProfilChooser extends FramePrincipale {
 
 			int index = Integer.parseInt(((JButton) e.getSource()).getName());
 			try {
-				FrameAddContact.photo = new ImageIcon(fichier[index].getPath());
+				FrameAddContact.photo= new ImageIcon(fichier[index].getPath());
 				FrameDispContact.photo = new ImageIcon(fichier[index].getPath());
 			} catch (Exception e2) {
 				// TODO: handle exception
