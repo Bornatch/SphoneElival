@@ -1,13 +1,13 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+@SuppressWarnings("serial")
 public class FrameGallerieProfilChooser extends FramePrincipale {
 
 	// création du panel
@@ -26,15 +27,18 @@ public class FrameGallerieProfilChooser extends FramePrincipale {
 
 	// objet dossier
 	private File dossier = new File("./Gallerie/");
-	File[] fichier = dossier.listFiles();
+
+	// liste des fichiers sans le thumbs.db
+	File[] fichier = dossier.listFiles(new FileFilter() {
+		@Override
+		public boolean accept(File file) {
+			return !file.isHidden();
+		}
+	});
 	String index;
 
 	// liste de boutons adaptable selon nombre de photos
 	List<JButton> miniatures = new ArrayList<JButton>();
-
-	// // bouton d'ajout d'image
-	private JButton addPic = new JButton(new ImageIcon("./icon/addPhoto2.png"));
-	// static BufferedImage image;
 
 	public FrameGallerieProfilChooser() {
 
@@ -47,7 +51,7 @@ public class FrameGallerieProfilChooser extends FramePrincipale {
 
 		panelScroll.setBackground(super.getBackground());
 		panelScroll.setLayout(new GridLayout(0, 2, 15, 15));
-		panelScroll.setBounds(10, 10, 378, 510);
+		panelScroll.setBounds(10, 10, 378, 600);
 
 		panelAdd.setBackground(super.getBackground());
 		panelAdd.setLayout(null);
@@ -56,40 +60,25 @@ public class FrameGallerieProfilChooser extends FramePrincipale {
 		// mise du ScrollPane dans le component Panel
 		JScrollPane scrollPane = new JScrollPane(panelScroll);
 		panelCenter.add(scrollPane, BorderLayout.CENTER);
-		scrollPane.setBounds(10, 10, 358, 510);
+		scrollPane.setBounds(10, 10, 358, 590);
 
-		int j = 0;
 		// Créer une liste des Imagesicon, le if retire le fichier thumbs
 		for (int i = 0; i < fichier.length; i++) {
 
-			if (!fichier[i].getName().equals("Thumbs.db")) {
+			// redimmensionnement de l'image
+			ImageIcon origine = new ImageIcon(fichier[i].getPath());
+			miniatures.add(new JButton(new ImageIcon(
+					origine.getImage().getScaledInstance(panelCenter.getWidth() / 2, 150, Image.SCALE_FAST))));
 
-				// redimmensionnement de l'image
-				ImageIcon origine = new ImageIcon(fichier[i].getPath());
-				miniatures.add(new JButton(new ImageIcon(
-						origine.getImage().getScaledInstance(panelCenter.getWidth() / 2, 150, Image.SCALE_FAST))));
+			// ajout de chaque miniature
+			panelScroll.add(miniatures.get(i));
+			miniatures.get(i).setPreferredSize(new Dimension(150, 120));
 
-				// ajout de chaque miniature
-				panelScroll.add(miniatures.get(j));
-				miniatures.get(j).setPreferredSize(new Dimension(150, 120));
-
-				// Ajout du numéro d'index pour gestion des events
-				miniatures.get(j).setName("" + i);
-				miniatures.get(j).addActionListener(new TraitementImage());
-				j++;
-			}
+			// Ajout du numéro d'index pour gestion des events
+			miniatures.get(i).setName("" + i);
+			miniatures.get(i).addActionListener(new TraitementImage());
 
 		}
-
-		// Ajout du bouton pour insérer des photos depuis la mémoire de l'ordi
-		panelCenter.add(panelAdd);
-		panelAdd.add(addPic);
-		addPic.setBounds(panelCenter.getWidth() / 3, 0, panelCenter.getWidth() / 3, 70);
-		addPic.setContentAreaFilled(false);
-		addPic.setBorderPainted(false);
-		addPic.setForeground(Color.BLACK);
-
-		// addPic.addActionListener(new TraitementAjoutPhoto());
 
 	}
 
@@ -101,8 +90,9 @@ public class FrameGallerieProfilChooser extends FramePrincipale {
 
 			int index = Integer.parseInt(((JButton) e.getSource()).getName());
 			try {
-				FrameAddContact.photo = new ImageIcon(fichier[index].getPath());
-				FrameDispContact.photo = new ImageIcon(fichier[index].getPath());
+				ImageIcon imgprofil = new ImageIcon(fichier[index].getPath());
+				FrameAddContact.profilPic.setIcon(new ImageIcon(imgprofil.getImage().getScaledInstance(150, 150, Image.SCALE_FAST)));
+				FrameDispContact.profilPic.setIcon(new ImageIcon(imgprofil.getImage().getScaledInstance(150, 150, Image.SCALE_FAST)));
 			} catch (Exception e2) {
 				// TODO: handle exception
 				JOptionPane fail = new JOptionPane("Erreur lors de la sélection");

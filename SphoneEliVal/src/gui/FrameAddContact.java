@@ -50,9 +50,8 @@ public class FrameAddContact extends FramePrincipale {
 	private JTextField mailField = new JTextField("mail");
 
 	// Bouton d'image de profil
-	JButton profilPic = new JButton(new ImageIcon("./icon/user.png"));
-	static ImageIcon photo;
-
+	static JButton profilPic = new JButton(new ImageIcon("./icon/user.png"));
+	
 	// Les boutons : sauvegarde et retour à Contacts
 	private JButton cancel = new JButton(new ImageIcon("./icon/cancel.png"));
 	private JButton save = new JButton(new ImageIcon("./icon/save.png"));
@@ -86,6 +85,7 @@ public class FrameAddContact extends FramePrincipale {
 		profilPic.setContentAreaFilled(false);
 		profilPic.setBorderPainted(false);
 		profilPic.setBounds(21, 5, 150, 150);
+		
 
 		profilPic.addActionListener(new TraitementProfilPic());
 
@@ -171,9 +171,9 @@ public class FrameAddContact extends FramePrincipale {
 			FrameGallerieProfilChooser gallerie;
 			gallerie = new FrameGallerieProfilChooser();
 
-			profilPic.setIcon(photo);
-			// gallerie.setVisible(true);
-
+			
+			//gallerie.setVisible(true);
+			
 			// dispose();
 		}
 	}
@@ -191,9 +191,11 @@ public class FrameAddContact extends FramePrincipale {
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+			}finally {
+				dispose();
 			}
 
-			dispose();
+			
 		}
 	}
 
@@ -208,12 +210,9 @@ public class FrameAddContact extends FramePrincipale {
 			String numNatel = numNatelField.getText();
 			String numPro = numProField.getText();
 			String mail = mailField.getText();
-			String profilPicPath = null;
+			ImageIcon icon = (ImageIcon) profilPic.getIcon();
 
-			// Contacts.updateContact(contactsList, index);//appeler le meth deleteContact
-			// avant de créer le nouveau
-
-			Contacts nouveau = new Contacts(prenom, nom, numNatel, numPro, mail, photo);
+			Contacts nouveau = new Contacts(prenom, nom, numNatel, numPro, mail, icon);
 			Contacts.AddContact(nouveau);
 
 			JFrame contacts;

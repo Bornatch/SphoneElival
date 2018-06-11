@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -34,7 +35,6 @@ public class FrameDispContact extends FramePrincipale {
 	private JPanel panelCenter = new JPanel();
 
 	// les Labels d'en tête
-	private JLabel imageLabel = new JLabel(new ImageIcon("./icon/contact.png"));
 	private JLabel nomTitreLabel = new JLabel("Noms");
 	private JLabel prenomLabel = new JLabel("Prénom");
 	private JLabel nomLabel = new JLabel("Nom");
@@ -45,16 +45,14 @@ public class FrameDispContact extends FramePrincipale {
 	private JLabel mailLabel = new JLabel("E-mail");
 
 	// Champs d'insertion du texte ( sauf numéros, déclarés dans la classe)
-
 	private JTextField prenomField = new JTextField("prénom");
 	private JTextField nomField = new JTextField("nom");
 	private JFormattedTextField numNatelField;
-	JFormattedTextField numProField;
+	private JFormattedTextField numProField;
 	private JTextField mailField = new JTextField("mail");
 
 	// Bouton d'image de profil
-	JButton profilPic = new JButton(new ImageIcon("./icon/user.png"));
-    static ImageIcon photo;
+	static JButton profilPic = new JButton(new ImageIcon("./icon/user.png"));
 
 	// Les boutons : sauvegarde et retour à Contacts
 	private JButton cancel = new JButton(new ImageIcon("./icon/cancel.png"));
@@ -76,7 +74,7 @@ public class FrameDispContact extends FramePrincipale {
 	 */
 	public FrameDispContact(int index, List<Contacts> contactsList) {
 
-		// initiaalisation des variables constructeurs
+		// initialisation des variables constructeurs
 		this.index = index;
 		this.contactsList = contactsList;
 
@@ -132,8 +130,13 @@ public class FrameDispContact extends FramePrincipale {
 
 		// Ajout de l'icon du profil
 		panelCenter.add(profilPic);
-		if (contactsList.get(index).getProfilPicPath() != null)
-			profilPic.setIcon(contactsList.get(index).getProfilPicPath());
+		if (contactsList.get(index).getProfilPicPath() != null) {
+			ImageIcon imgprofil = contactsList.get(index).getProfilPicPath();
+			profilPic.setIcon(new ImageIcon(imgprofil.getImage().getScaledInstance(150, 150, Image.SCALE_FAST)));
+
+		} else {
+			profilPic.setIcon(new ImageIcon("./icon/user.png"));
+		}
 		profilPic.setContentAreaFilled(false);
 		profilPic.setBorderPainted(false);
 		profilPic.setBounds(21, 5, 150, 150);
@@ -217,7 +220,6 @@ public class FrameDispContact extends FramePrincipale {
 		public void actionPerformed(ActionEvent e) {
 
 			Contacts.deleteContact(index);
-			System.out.println(index);
 
 			JFrame contacts;
 			try {
@@ -241,10 +243,6 @@ public class FrameDispContact extends FramePrincipale {
 			FrameGallerieProfilChooser gallerie;
 			gallerie = new FrameGallerieProfilChooser();
 
-			profilPic.setIcon(photo);
-			// gallerie.setVisible(true);
-
-			// dispose();
 		}
 	}
 
@@ -259,7 +257,7 @@ public class FrameDispContact extends FramePrincipale {
 			String numNatel = numNatelField.getText();
 			String numPro = numProField.getText();
 			String mail = mailField.getText();
-			ImageIcon icon = photo;
+			ImageIcon icon = (ImageIcon) profilPic.getIcon();
 
 			Contacts nouveau = new Contacts(prenom, nom, numNatel, numPro, mail, icon);
 			Contacts.updateContact(nouveau, index);
@@ -276,14 +274,6 @@ public class FrameDispContact extends FramePrincipale {
 			dispose();
 
 		}
-	}
-
-	public ImageIcon getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(ImageIcon photo) {
-		this.photo = photo;
 	}
 
 }

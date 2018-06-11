@@ -7,10 +7,8 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
-import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -39,7 +37,14 @@ public class FrameGallerie extends FramePrincipale {
 
 	// objet dossier
 	private File dossier = new File("./Gallerie/");
-	File[] fichier = dossier.listFiles();
+
+	// liste des fichiers sans le thumbs.db
+	File[] fichier = dossier.listFiles(new FileFilter() {
+		@Override
+		public boolean accept(File file) {
+			return !file.isHidden();
+		}
+	});
 	String index;
 
 	// liste de boutons adaptable selon nombre de photos
@@ -47,7 +52,7 @@ public class FrameGallerie extends FramePrincipale {
 
 	// // bouton d'ajout d'image
 	private JButton addPic = new JButton(new ImageIcon("./icon/addPhoto2.png"));
-	static BufferedImage image;
+	
 
 	public FrameGallerie() {
 
@@ -71,28 +76,21 @@ public class FrameGallerie extends FramePrincipale {
 		panelCenter.add(scrollPane, BorderLayout.CENTER);
 		scrollPane.setBounds(10, 10, 358, 510);
 
-		int j = 0;
 		// Créer une liste des Imagesicon, le if retire le fichier thumbs
-		for (int i = 0; i < fichier.length ; i++) {
-			
-			if (!fichier[i].getName().equals("Thumbs.db")) {
+		for (int i = 0; i < fichier.length; i++) {
 
-				
-				// redimmensionnement de l'image
-				ImageIcon origine = new ImageIcon(fichier[i].getPath());
-				miniatures.add(new JButton(new ImageIcon(
-						origine.getImage().getScaledInstance(panelCenter.getWidth() / 2, 150, Image.SCALE_FAST))));
+			// redimmensionnement de l'image
+			ImageIcon origine = new ImageIcon(fichier[i].getPath());
+			miniatures.add(new JButton(new ImageIcon(
+					origine.getImage().getScaledInstance(panelCenter.getWidth() / 2, 150, Image.SCALE_FAST))));
 
-				// ajout de chaque miniature
-				panelScroll.add(miniatures.get(j));
-				miniatures.get(j).setPreferredSize(new Dimension(150, 120));
+			// ajout de chaque miniature
+			panelScroll.add(miniatures.get(i));
+			miniatures.get(i).setPreferredSize(new Dimension(150, 120));
 
-				// Ajout du numéro d'index pour gestion des events
-				miniatures.get(j).setName("" + i);
-				miniatures.get(j).addActionListener(new TraitementImage());
-				j++;
-			}
-			
+			// Aiout du numéro d'index pour gestion des events
+			miniatures.get(i).setName("" + i);
+			miniatures.get(i).addActionListener(new TraitementImage());
 
 		}
 

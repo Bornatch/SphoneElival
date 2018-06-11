@@ -119,9 +119,11 @@ public class FrameAccueil extends FramePrincipale {
 			} catch (IOException e1) {
 
 				e1.printStackTrace();
+			}finally {
+				dispose();
 			}
 
-			dispose();
+			
 		}
 	}
 

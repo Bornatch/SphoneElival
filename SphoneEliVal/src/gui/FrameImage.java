@@ -47,7 +47,14 @@ public class FrameImage extends FramePrincipale {
 		// test 		System.out.println(fichier[index].getPath());
 
 		//redimensionnement avec scale_FAST, SCALE_Smooth impossible avec .gif...
-		imageSelect = new JLabel(new ImageIcon(photo.getImage().getScaledInstance(largeur,hauteur, Image.SCALE_FAST)));
+		
+		if (photo.getIconHeight()<hauteur) {
+			imageSelect = new JLabel(new ImageIcon(photo.getImage()));
+		} else {
+			imageSelect = new JLabel(new ImageIcon(photo.getImage().getScaledInstance(largeur,hauteur, Image.SCALE_FAST)));
+
+		}
+		
 
 		// panel d'affichage des images sur partie haute
 		this.add(imageSelect, BorderLayout.CENTER);
@@ -55,7 +62,7 @@ public class FrameImage extends FramePrincipale {
 		imageSelect.setBackground(Color.GRAY);
 
 		// ajout du boutons de navigation
-		if (index < fichier.length - 2) { // suppression de Thumbs
+		if (index < fichier.length - 1) { 
 			imageSelect.add(next);
 			next.setBounds(imageSelect.getWidth() / 3 * 2, 539, imageSelect.getWidth() / 3, 70);
 			next.setOpaque(true);
