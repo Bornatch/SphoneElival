@@ -9,6 +9,7 @@ public class MainDemarrage {
 
 	static JFrame animInit;
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 
 		// Animation de démarrage

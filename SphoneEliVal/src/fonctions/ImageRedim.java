@@ -5,11 +5,6 @@ import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsEnvironment;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 
 /**
  * Redimensionner une image
@@ -17,23 +12,22 @@ import javax.imageio.ImageIO;
 public class ImageRedim {
 
 	public static BufferedImage scale(BufferedImage bImage, double factor) {
-		
+
 		int destWidth = (int) (bImage.getWidth() * factor);
 		int destHeight = (int) (bImage.getHeight() * factor);
-		
+
 		// créer l'image de destination
 		GraphicsConfiguration configuration = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice()
 				.getDefaultConfiguration();
-		
+
 		BufferedImage bImageNew = configuration.createCompatibleImage(destWidth, destHeight);
-		
+
 		Graphics2D graphics = bImageNew.createGraphics();
-		
+
 		graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 		graphics.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
 				RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
-		
-		
+
 		// dessiner l'image de destination
 		graphics.drawImage(bImage, 0, 0, destWidth, destHeight, 0, 0, bImage.getWidth(), bImage.getHeight(), null);
 		graphics.dispose();
@@ -41,7 +35,4 @@ public class ImageRedim {
 		return bImageNew;
 	}
 
-	
-		
-	
 }

@@ -341,6 +341,7 @@ public class Contacts implements Serializable {
 		return contactsList;
 	}
 
+	@SuppressWarnings("static-access")
 	public void setContactsList(List<Contacts> contactsList) {
 		this.contactsList = contactsList;
 	}

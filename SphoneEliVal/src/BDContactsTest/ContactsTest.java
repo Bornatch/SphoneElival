@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test;
 
 import BDContacts.Contacts;
 
+@SuppressWarnings("unused")
 class ContactsTest {
 
 	

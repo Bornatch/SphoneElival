@@ -98,6 +98,7 @@ public class FrameGallerieProfilChooser extends FramePrincipale {
 						.setIcon(new ImageIcon(imgprofil.getImage().getScaledInstance(150, 150, Image.SCALE_FAST)));
 
 			} catch (Exception e2) {
+				@SuppressWarnings("unused")
 				JOptionPane fail = new JOptionPane("Erreur lors de la sélection");
 			} finally {
 				dispose();

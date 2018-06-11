@@ -63,6 +63,7 @@ public class FrameDispContact extends FramePrincipale {
 
 	// variable de constructeur
 	private int index;
+	@SuppressWarnings("unused")
 	private List<Contacts> contactsList;
 
 	/**
@@ -234,6 +235,7 @@ public class FrameDispContact extends FramePrincipale {
 		/**
 		 * comportement du bouton de l'image du profil,
 		 */
+		@SuppressWarnings("unused")
 		public void actionPerformed(ActionEvent e) {
 
 			FrameGallerieProfilChooser gallerie;

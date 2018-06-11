@@ -3,10 +3,8 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -21,15 +19,12 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.ListModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import BDContacts.Contacts;
-import fonctions.ContactListRenderer;
-import gui.FrameGallerie.TraitementImage;
 
 /**
  * Affichage de contacts et bouton d'ajout
@@ -42,7 +37,8 @@ public class FrameContacts extends FramePrincipale {
 	// création du panel
 	private JPanel panelCenter = new JPanel();
 	private JScrollPane scrollPane;
-	private JList jList;
+
+	private JList<?> jList;
 
 	// liste de contact
 	private List<Contacts> contactsList;
@@ -62,7 +58,6 @@ public class FrameContacts extends FramePrincipale {
 	Font ssTitre = new Font("helvetica", Font.BOLD, 15);
 	Font liste = new Font("helvetica", Font.BOLD, 20);
 
-	@SuppressWarnings("unchecked")
 	public FrameContacts() throws IOException {
 
 		// ajout du titre
@@ -93,7 +88,7 @@ public class FrameContacts extends FramePrincipale {
 
 		contactsList = Contacts.deserializeContacts();
 
-		for (Iterator iterator = contactsList.iterator(); iterator.hasNext();) {
+		for (Iterator<Contacts> iterator = contactsList.iterator(); iterator.hasNext();) {
 			Contacts contacts = (Contacts) iterator.next();
 			contactsListToString.add(contacts.ToString());//
 		}
@@ -104,12 +99,12 @@ public class FrameContacts extends FramePrincipale {
 		scrollPane.setBounds(21, 205, 378, 510);
 
 		// Affichege de la jlist de contact
-		jList = new JList(contactsListToString.toArray());
+		jList = new JList<Object>(contactsListToString.toArray());
 		jList.setBorder(new EmptyBorder(10, 10, 10, 10));
 		jList.setFixedCellHeight(45);
 		jList.setFont(liste);
-	
-		//jList.setCellRenderer(new ContactListRenderer());h
+
+		// jList.setCellRenderer(new ContactListRenderer());h
 		panelCenter.add(jList);
 
 		jList.addListSelectionListener(new TraitementList());
@@ -138,8 +133,7 @@ public class FrameContacts extends FramePrincipale {
 			int index = e.getFirstIndex();
 			JFrame displayContact = new FrameDispContact(index, contactsList);
 			displayContact.setVisible(true);
-			
-			
+
 			dispose();
 
 		}

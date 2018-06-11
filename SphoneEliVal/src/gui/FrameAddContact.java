@@ -165,9 +165,8 @@ public class FrameAddContact extends FramePrincipale {
 		 */
 		public void actionPerformed(ActionEvent e) {
 
-			FrameGallerieProfilChooser gallerie;
-			gallerie = new FrameGallerieProfilChooser();
-
+			@SuppressWarnings("unused")
+			FrameGallerieProfilChooser gallerie = new FrameGallerieProfilChooser();
 		}
 	}
 

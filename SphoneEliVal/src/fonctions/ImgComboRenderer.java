@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -32,20 +31,17 @@ public class ImgComboRenderer extends JPanel implements ListCellRenderer {
 	}
 
 	public Component getListCellRendererComponent(JList list, Object obj, int row, boolean sel, boolean hasFocus) {
-		
-		
-//		if (obj instanceof ImageIcon) {
-//			m_c = (ImageIcon) obj;
-//
-//		}
-			
-			 JLabel label = new JLabel((ImageIcon) obj) {
-			      public Dimension getPreferredSize() {
-			        return new Dimension(150, 80);
-			      }
-			    };
-			    
-		
+
+		// if (obj instanceof ImageIcon) {
+		// m_c = (ImageIcon) obj;
+		//
+		// }
+
+		JLabel label = new JLabel((ImageIcon) obj) {
+			public Dimension getPreferredSize() {
+				return new Dimension(150, 80);
+			}
+		};
 
 		return label;
 	}

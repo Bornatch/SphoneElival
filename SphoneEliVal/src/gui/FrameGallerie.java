@@ -52,7 +52,6 @@ public class FrameGallerie extends FramePrincipale {
 
 	// // bouton d'ajout d'image
 	private JButton addPic = new JButton(new ImageIcon("./icon/addPhoto2.png"));
-	
 
 	public FrameGallerie() {
 
@@ -142,7 +141,7 @@ public class FrameGallerie extends FramePrincipale {
 		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
 		public void actionPerformed(ActionEvent e) {
-			int result;
+
 			chooser = new JFileChooser();
 			chooser.setCurrentDirectory(new java.io.File(".", "Gallerie"));
 			chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);

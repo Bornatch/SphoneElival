@@ -37,9 +37,9 @@ public class FrameImage extends FramePrincipale {
 		this.index = index;
 
 		// découpage de l'extension du fichier
-		String chemin = fichier[index].getPath();
-		int taille = chemin.length();
-		String extension = chemin.substring(taille - 3);
+		//String chemin = fichier[index].getPath();
+		//int taille = chemin.length();
+		//String extension = chemin.substring(taille - 3);
 		//System.out.println(extension);
 
 		this.photo = new ImageIcon(fichier[index].getPath());
