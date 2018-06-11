@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -20,12 +19,10 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 import BDContacts.Contacts;
-import gui.FrameAddContact.TraitementProfilPic;
 
 /**
  * Frame de modification des contacts, inspirée de FrameAddContact
- * 
- *
+ * Récupère le contenu du contact et remplis les champs(Field)
  *
  */
 @SuppressWarnings("serial")
@@ -91,7 +88,6 @@ public class FrameDispContact extends FramePrincipale {
 			numNatelField = new JFormattedTextField(tel);
 			numProField = new JFormattedTextField(tel);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -269,9 +265,9 @@ public class FrameDispContact extends FramePrincipale {
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+			} finally {
+				dispose();
 			}
-
-			dispose();
 
 		}
 	}

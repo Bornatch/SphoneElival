@@ -90,15 +90,19 @@ public class FrameGallerieProfilChooser extends FramePrincipale {
 
 			int index = Integer.parseInt(((JButton) e.getSource()).getName());
 			try {
+
 				ImageIcon imgprofil = new ImageIcon(fichier[index].getPath());
-				FrameAddContact.profilPic.setIcon(new ImageIcon(imgprofil.getImage().getScaledInstance(150, 150, Image.SCALE_FAST)));
-				FrameDispContact.profilPic.setIcon(new ImageIcon(imgprofil.getImage().getScaledInstance(150, 150, Image.SCALE_FAST)));
+				FrameAddContact.profilPic
+						.setIcon(new ImageIcon(imgprofil.getImage().getScaledInstance(150, 150, Image.SCALE_FAST)));
+				FrameDispContact.profilPic
+						.setIcon(new ImageIcon(imgprofil.getImage().getScaledInstance(150, 150, Image.SCALE_FAST)));
+
 			} catch (Exception e2) {
-				// TODO: handle exception
 				JOptionPane fail = new JOptionPane("Erreur lors de la sélection");
+			} finally {
+				dispose();
 			}
 
-			dispose();
 		}
 	}
 

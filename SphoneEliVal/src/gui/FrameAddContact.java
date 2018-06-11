@@ -51,13 +51,14 @@ public class FrameAddContact extends FramePrincipale {
 
 	// Bouton d'image de profil
 	static JButton profilPic = new JButton(new ImageIcon("./icon/user.png"));
-	
+
 	// Les boutons : sauvegarde et retour à Contacts
 	private JButton cancel = new JButton(new ImageIcon("./icon/cancel.png"));
 	private JButton save = new JButton(new ImageIcon("./icon/save.png"));
 
 	// Déclaration des polices
 	Font titre = new Font("helvetica", Font.BOLD, 25);
+
 	Font ssTitre = new Font("helvetica", Font.BOLD, 20);
 	Font texte = new Font("helvetica", Font.BOLD, 14);
 
@@ -76,7 +77,6 @@ public class FrameAddContact extends FramePrincipale {
 			numNatelField = new JFormattedTextField(tel);
 			numProField = new JFormattedTextField(tel);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -85,7 +85,6 @@ public class FrameAddContact extends FramePrincipale {
 		profilPic.setContentAreaFilled(false);
 		profilPic.setBorderPainted(false);
 		profilPic.setBounds(21, 5, 150, 150);
-		
 
 		profilPic.addActionListener(new TraitementProfilPic());
 
@@ -171,10 +170,6 @@ public class FrameAddContact extends FramePrincipale {
 			FrameGallerieProfilChooser gallerie;
 			gallerie = new FrameGallerieProfilChooser();
 
-			
-			//gallerie.setVisible(true);
-			
-			// dispose();
 		}
 	}
 
@@ -189,13 +184,11 @@ public class FrameAddContact extends FramePrincipale {
 				contacts = new FrameContacts();
 				contacts.setVisible(true);
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			}finally {
+			} finally {
 				dispose();
 			}
 
-			
 		}
 	}
 
@@ -220,11 +213,10 @@ public class FrameAddContact extends FramePrincipale {
 				contacts = new FrameContacts();
 				contacts.setVisible(true);
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
+			} finally {
+				dispose();
 			}
-
-			dispose();
 
 		}
 	}
