@@ -4,10 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -183,6 +181,7 @@ public class FrameAddContact extends FramePrincipale {
 			try {
 				contacts = new FrameContacts();
 				contacts.setVisible(true);
+				profilPic.setIcon(new ImageIcon("./icon/user.png"));
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			} finally {

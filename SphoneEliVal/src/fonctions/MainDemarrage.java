@@ -1,20 +1,15 @@
 package fonctions;
 
-import java.awt.image.ImageFilter;
-
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
-import gui.*;
+import gui.FrameAccueil;
+import gui.FrameDemarrage;
 
-public class Demarrage {
+public class MainDemarrage {
 
 	static JFrame animInit;
 
-	@SuppressWarnings("unused")
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		// Animation de démarrage
 		try {
@@ -26,6 +21,7 @@ public class Demarrage {
 			e.printStackTrace();
 		}
 
+		// Affichage du luncher
 		JFrame test = new FrameAccueil();
 
 	}
