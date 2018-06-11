@@ -14,10 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import fonctions.*;
 import fonctionsSettings.ColorManagerBord;
 import fonctionsSettings.ColorManagerMenu;
-
 
 /*
  * Architecture principale du projet, mère de toutes les frames appelées.
@@ -35,7 +33,7 @@ public abstract class FramePrincipale extends JFrame {
 
 	// couleur des bordures du smartphone
 	private Color bord = ColorManagerBord.getNewColor();
-	
+
 	// couleur des bordures du smartphone
 	private Color menu = ColorManagerMenu.getNewColor();
 
@@ -90,7 +88,7 @@ public abstract class FramePrincipale extends JFrame {
 		// fonctions dans FrameAccueil
 
 		// adapte l'image à la couleur du smartphone (variable bord)
-		if (bord.equals(Color.BLACK)||bord.equals(Color.blue)||bord.equals(Color.DARK_GRAY)) {
+		if (bord.equals(Color.BLACK) || bord.equals(Color.blue) || bord.equals(Color.DARK_GRAY)) {
 			boutonExit.setIcon(new ImageIcon("./icon/powerW.png"));
 			boutonMenu.setIcon(new ImageIcon("./icon/homeW.png"));
 		} else {
@@ -135,8 +133,6 @@ public abstract class FramePrincipale extends JFrame {
 		labelHeure.setFont(new Font("helvetica", Font.BOLD, 12));
 
 	}
-	
-
 
 	public class TraitementExit implements ActionListener {
 		/**

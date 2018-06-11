@@ -53,11 +53,17 @@ public class Contacts implements Serializable {
 	 * Constructeur de contacts, utilisé par la frameAddContact btn save
 	 * 
 	 * @param prenom
+	 *            Srting le prénom
 	 * @param nom
+	 *            string le nom
 	 * @param numnatel
+	 *            sting le num natel
 	 * @param numprofessionel
+	 *            String le num pro
 	 * @param email
+	 *            String le mail
 	 * @param photo
+	 *            imageicon du profil
 	 */
 	public Contacts(String prenom, String nom, String numnatel, String numprofessionel, String email, ImageIcon photo) {
 
@@ -81,9 +87,10 @@ public class Contacts implements Serializable {
 	}
 
 	/**
-	 * Envoie la sérialization d'un contact
+	 * Ajout du contact en envoyant la serialisation de l'objet Contacts
 	 * 
-	 * @param contact
+	 * @param nouveau
+	 *            Contacts
 	 */
 	public static void AddContact(Contacts nouveau) {
 
@@ -91,7 +98,7 @@ public class Contacts implements Serializable {
 
 	}
 
-	public void afficherList() { // affiche la liste
+	public void afficherList() {
 		for (int i = 0; i < contactsList.size(); i++) {
 			Contacts temp = (Contacts) contactsList.get(i);
 			System.out.println(temp.getPrenom() + " " + temp.getNom()); // autre façon d'afficher
@@ -105,8 +112,10 @@ public class Contacts implements Serializable {
 	 * méthode de modification d'un contact renvoi la methode deleteContact puis
 	 * addContact
 	 * 
-	 * @param contact
+	 * @param c
+	 *            Contacts
 	 * @param index
+	 *            int
 	 */
 	public static void updateContact(Contacts c, int index) {
 
@@ -119,14 +128,10 @@ public class Contacts implements Serializable {
 	 * Suppression du contact à l'index de fichiers[]
 	 * 
 	 * @param index
+	 *            int
 	 */
 	public static void deleteContact(int index) {
 
-		// fichiers = dossier.listFiles();
-
-		// fichiers[index].delete();
-
-		// contactsList.remove(index);
 		Path path = fichiers[index].toPath();
 
 		try {
@@ -146,7 +151,8 @@ public class Contacts implements Serializable {
 	 * Méthode pour sérialiser un contact en créant un fichier et en k'ahjoutant
 	 * daand dossier DataContact
 	 * 
-	 * @param contact
+	 * @param nouveau
+	 *            Contacts
 	 */
 	public static void serializeObject(Contacts nouveau) {
 
@@ -179,9 +185,10 @@ public class Contacts implements Serializable {
 
 	/**
 	 * Meth pour sérialiser le fichier après delete et modif
-	 *
+	 * 
+	 * @param f
+	 *            File
 	 */
-
 	public static void serializeObjectFile(File f) {
 
 		FileOutputStream fichier = null;
@@ -209,6 +216,7 @@ public class Contacts implements Serializable {
 	/**
 	 * Instancie la liste de contacts en désérialisant les fichiers
 	 */
+
 	public void readObjectToList() {
 
 		ObjectInputStream objIn = null;
@@ -238,8 +246,9 @@ public class Contacts implements Serializable {
 	/**
 	 * Meth pour désérializer les contacts, crée une liste de contacts
 	 * 
+	 * @return la liste des contacts
 	 */
-	public static List<Contacts> deserializeContacts() throws IOException {
+	public static List<Contacts> deserializeContacts() {
 
 		// liste de réception des contacts
 		List<Contacts> mesContacts = new ArrayList<Contacts>();
@@ -261,8 +270,12 @@ public class Contacts implements Serializable {
 				Contacts contact = (Contacts) objIn.readObject();
 				mesContacts.add(contact);
 
-			} catch (Exception e) {
-
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
 			} finally {
 				try { // fermeture des streams
 					fileIn.close();
@@ -280,9 +293,6 @@ public class Contacts implements Serializable {
 
 	}
 
-	/**
-	 * Getters et setters
-	 */
 	public String getNumNatel() {
 		return numNatel;
 	}

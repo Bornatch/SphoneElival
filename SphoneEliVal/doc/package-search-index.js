@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"gui"}]
+packageSearchIndex = [{"l":"BDContacts"}]

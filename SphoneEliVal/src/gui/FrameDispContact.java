@@ -21,8 +21,8 @@ import javax.swing.text.MaskFormatter;
 import BDContacts.Contacts;
 
 /**
- * Frame de modification des contacts, inspirée de FrameAddContact
- * Récupère le contenu du contact et remplis les champs(Field)
+ * Frame de modification des contacts, inspirée de FrameAddContact Récupère le
+ * contenu du contact et remplis les champs(Field)
  *
  */
 @SuppressWarnings("serial")
@@ -68,7 +68,9 @@ public class FrameDispContact extends FramePrincipale {
 
 	/**
 	 * @param index
+	 *            la valeur dasns la liste de contacts
 	 * @param contactsList
+	 *            liste passée en paramètre
 	 */
 	public FrameDispContact(int index, List<Contacts> contactsList) {
 
@@ -202,7 +204,6 @@ public class FrameDispContact extends FramePrincipale {
 				contacts = new FrameContacts();
 				contacts.setVisible(true);
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 
@@ -265,7 +266,6 @@ public class FrameDispContact extends FramePrincipale {
 				contacts = new FrameContacts();
 				contacts.setVisible(true);
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} finally {
 				dispose();

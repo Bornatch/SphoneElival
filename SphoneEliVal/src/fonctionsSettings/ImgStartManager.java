@@ -31,7 +31,7 @@ public abstract class ImgStartManager implements Serializable {
 	/**
 	 * Sérialize une ImageIcon
 	 * 
-	 * @param ImageIcon
+	 * @param c l'image à stocker
 	 * 
 	 */
 	public static void stockImg(ImageIcon c) {
