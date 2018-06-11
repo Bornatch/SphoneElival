@@ -154,7 +154,7 @@ public class Contacts implements Serializable {
 		BufferedOutputStream bfichier = null;
 		ObjectOutputStream obfichier = null;
 		try {
-			fichier = new FileOutputStream("SphoneElival/DataContact/" + nouveau.Nom + nouveau.Prenom + ".ser");
+			fichier = new FileOutputStream("./DataContact/" + nouveau.Nom + nouveau.Prenom + ".ser");
 
 			bfichier = new BufferedOutputStream(fichier);
 			obfichier = new ObjectOutputStream(bfichier);
@@ -188,7 +188,7 @@ public class Contacts implements Serializable {
 		BufferedOutputStream bfichier = null;
 		ObjectOutputStream obfichier = null;
 		try {
-			fichier = new FileOutputStream("SphoneElival/DataContact/" + f.getClass() + ".ser");
+			fichier = new FileOutputStream("./DataContact/" + f.getClass() + ".ser");
 
 			bfichier = new BufferedOutputStream(fichier);
 			obfichier = new ObjectOutputStream(bfichier);
