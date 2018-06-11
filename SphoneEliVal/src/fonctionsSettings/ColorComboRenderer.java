@@ -1,4 +1,4 @@
-package fonctions;
+package fonctionsSettings;
 
 import java.awt.Color;
 import java.awt.Component;

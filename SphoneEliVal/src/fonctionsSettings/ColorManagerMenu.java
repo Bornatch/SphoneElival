@@ -1,4 +1,4 @@
-package fonctions;
+package fonctionsSettings;
 
 import java.awt.Color;
 import java.io.BufferedInputStream;
@@ -20,12 +20,12 @@ import java.io.Serializable;
  *
  */
 
-public abstract class ColorManagerBord implements Serializable {	
+public abstract class ColorManagerMenu implements Serializable {	
 	private static final long serialVersionUID = -7148233319040958114L;
 
 	static Color newColor;
 
-	static File stock = new File("./icon/temp", "couleurBord.ser");
+	static File stock = new File("./icon/temp", "couleurBgMenu.ser");
 
 	/**
 	 * Sérialize un objet couleur
@@ -102,7 +102,7 @@ public abstract class ColorManagerBord implements Serializable {
 	}
 
 	public static void setNewColor(Color newColor) {
-		ColorManagerBord.newColor = newColor;
+		ColorManagerMenu.newColor = newColor;
 	}
 
 }

@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import fonctions.*;
+import fonctionsSettings.ColorManagerBord;
+import fonctionsSettings.ColorManagerMenu;
 
 
 /*

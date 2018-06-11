@@ -1,6 +1,5 @@
-package fonctions;
+package fonctionsSettings;
 
-import java.awt.Color;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -12,28 +11,30 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+import javax.swing.ImageIcon;
+
 /**
- * Classe de gestion de la couleur du Smartphone via sauvegarde dans fichier
- * temp
+ * Classe de gestion de l'image du fond d'écran de l'acceuil du Smartphone via
+ * sauvegarde dans fichier temp
  * 
  * @author Bornatch
  *
  */
 
-public abstract class ColorManagerMenu implements Serializable {	
+public abstract class ImgStartManager implements Serializable {
 	private static final long serialVersionUID = -7148233319040958114L;
 
-	static Color newColor;
+	static ImageIcon newImageFnd;
 
-	static File stock = new File("./icon/temp", "couleurBgMenu.ser");
+	static File stock = new File("./icon/temp", "StartEcran.ser");
 
 	/**
-	 * Sérialize un objet couleur
+	 * Sérialize une ImageIcon
 	 * 
-	 * @param c couleur reçue du combobox
+	 * @param ImageIcon
 	 * 
 	 */
-	public static void stockColor(Color c) {
+	public static void stockImg(ImageIcon c) {
 
 		ObjectOutputStream objOut = null;
 
@@ -59,15 +60,15 @@ public abstract class ColorManagerMenu implements Serializable {
 	}
 
 	/**
-	 * Desérialize un objet couleur
+	 * Desérialize un objet ImageIcon
 	 */
-	public static void destockColor() {
+	public static void destockImg() {
 
 		ObjectInputStream objIn = null;
 
 		try {
 			objIn = new ObjectInputStream(new BufferedInputStream(new FileInputStream(stock)));
-			newColor = (Color) objIn.readObject();
+			newImageFnd = (ImageIcon) objIn.readObject();
 
 		} catch (FileNotFoundException e) {
 
@@ -87,7 +88,7 @@ public abstract class ColorManagerMenu implements Serializable {
 			}
 		}
 
-		setNewColor(newColor);
+		setNewimageFnd(newImageFnd);
 
 	}
 
@@ -96,13 +97,13 @@ public abstract class ColorManagerMenu implements Serializable {
 	 * 
 	 * @return la couleur lue dans le fichier settings.ser
 	 */
-	public static Color getNewColor() {
-		destockColor();
-		return newColor;
+	public static ImageIcon getNewImageFnd() {
+		destockImg();
+		return newImageFnd;
 	}
 
-	public static void setNewColor(Color newColor) {
-		ColorManagerMenu.newColor = newColor;
+	public static void setNewimageFnd(ImageIcon newImageFnd) {
+		ImgStartManager.newImageFnd = newImageFnd;
 	}
 
 }

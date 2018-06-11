@@ -1,4 +1,4 @@
-package fonctions;
+package fonctionsSettings;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

@@ -13,11 +13,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import fonctions.ColorComboRenderer;
-import fonctions.ColorManagerBord;
-import fonctions.ColorManagerMenu;
-import fonctions.ImgAccueilManager;
-import fonctions.ImgComboRenderer;
+import fonctionsSettings.ColorComboRenderer;
+import fonctionsSettings.ColorManagerBord;
+import fonctionsSettings.ColorManagerMenu;
+import fonctionsSettings.ImgAccueilManager;
+import fonctionsSettings.ImgComboRenderer;
 
 @SuppressWarnings("serial")
 public class FrameSettings extends FramePrincipale {

@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-import fonctions.ImgAccueilManager;
+import fonctionsSettings.ImgAccueilManager;
 
 @SuppressWarnings("serial")
 public class FrameAccueil extends FramePrincipale {

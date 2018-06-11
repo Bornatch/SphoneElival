@@ -9,6 +9,11 @@ import javax.swing.ListCellRenderer;
 
 import BDContacts.Contacts;
 
+/**
+ * inutilisée
+ * @author Bornatch
+ *
+ */
 @SuppressWarnings("serial")
 public class ContactListRenderer extends JPanel implements ListCellRenderer<Contacts> {
 
