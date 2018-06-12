@@ -257,6 +257,7 @@ public class FrameDispContact extends FramePrincipale {
 			String numPro = numProField.getText();
 			String mail = mailField.getText();
 			ImageIcon icon = (ImageIcon) profilPic.getIcon();
+			profilPic.setIcon(new ImageIcon("./icon/user.png"));
 
 			Contacts nouveau = new Contacts(prenom, nom, numNatel, numPro, mail, icon);
 			Contacts.updateContact(nouveau, index);
