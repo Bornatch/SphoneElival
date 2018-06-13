@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 import javax.swing.text.MaskFormatter;
 
 import BDContacts.Contacts;
@@ -51,6 +52,11 @@ public class FrameDispContact extends FramePrincipale {
 	// Bouton d'image de profil
 	static JButton profilPic = new JButton(new ImageIcon("./icon/user.png"));
 
+	// Bouton d'affichage des propriétés avec booleen gérant l'affichage des
+	// éléments de modification
+	private JToggleButton edit = new JToggleButton(new ImageIcon("./icon/edit.png"));
+	private Boolean editBool = false;
+
 	// Les boutons : sauvegarde et retour à Contacts
 	private JButton cancel = new JButton(new ImageIcon("./icon/cancel.png"));
 	private JButton save = new JButton(new ImageIcon("./icon/save.png"));
@@ -63,7 +69,6 @@ public class FrameDispContact extends FramePrincipale {
 
 	// variable de constructeur
 	private int index;
-	@SuppressWarnings("unused")
 	private List<Contacts> contactsList;
 
 	/**
@@ -140,7 +145,14 @@ public class FrameDispContact extends FramePrincipale {
 		profilPic.setBorderPainted(false);
 		profilPic.setBounds(21, 5, 150, 150);
 
-		profilPic.addActionListener(new TraitementProfilPic());
+		// gestion d'affichage selon editbool
+		panelCenter.add(edit);
+		edit.setBounds(245, 45,70, 70);
+		edit.setOpaque(true);
+		edit.setContentAreaFilled(false);
+		edit.setBorderPainted(false);
+
+		edit.addActionListener(new TraitementEdit());
 
 		// Ajout des textField
 
@@ -148,40 +160,49 @@ public class FrameDispContact extends FramePrincipale {
 		prenomField.setFont(texte);
 		prenomField.setText(contactsList.get(index).getPrenom());
 		prenomField.setBounds(150, 190, 200, 30);
+		prenomField.setEditable(editBool);
 
 		panelCenter.add(nomField);
 		nomField.setFont(texte);
 		nomField.setText(contactsList.get(index).getNom());
 		nomField.setBounds(150, 230, 200, 30);
+		nomField.setEditable(editBool);
 
 		panelCenter.add(numNatelField);
 		numNatelField.setFont(texte);
 		numNatelField.setText(contactsList.get(index).getNumNatel());
 		numNatelField.setBounds(150, 310, 200, 30);
+		numNatelField.setEditable(editBool);
 
 		panelCenter.add(numProField);
 		numProField.setFont(texte);
 		numProField.setText(contactsList.get(index).getNumPro());
 		numProField.setBounds(150, 350, 200, 30);
+		numProField.setEditable(editBool);
 
 		panelCenter.add(mailField);
 		mailField.setFont(texte);
 		mailField.setText(contactsList.get(index).getEmail());
 		mailField.setBounds(150, 430, 200, 30);
+		mailField.setEditable(editBool);
 
 		// Ajout des boutons
+
 		panelCenter.add(cancel);
-		cancel.setBounds(panelCenter.getWidth() / 3 * 2, 500, panelCenter.getWidth() / 3, 70);
+		cancel.setBounds(panelCenter.getWidth() / 3, 500, panelCenter.getWidth() / 3, 70);
 		cancel.setOpaque(true);
 		cancel.setContentAreaFilled(false);
 		cancel.setBorderPainted(false);
+
 		cancel.addActionListener(new TraitementCancel());
 
 		panelCenter.add(delete);
-		delete.setBounds(panelCenter.getWidth() / 3, 500, panelCenter.getWidth() / 3, 70);
+		delete.setBounds(panelCenter.getWidth() / 3 * 2, 500, panelCenter.getWidth() / 3, 70);
 		delete.setOpaque(true);
 		delete.setContentAreaFilled(false);
 		delete.setBorderPainted(false);
+		delete.setVisible(editBool);
+
 		delete.addActionListener(new TraitementDelete());
 
 		panelCenter.add(save);
@@ -189,8 +210,36 @@ public class FrameDispContact extends FramePrincipale {
 		save.setOpaque(true);
 		save.setContentAreaFilled(false);
 		save.setBorderPainted(false);
+		save.setVisible(editBool);
+
 		save.addActionListener(new TraitementSave());
 
+	}
+
+	public class TraitementEdit implements ActionListener {
+		/**
+		 * comportement du bouton(edit),
+		 */
+		public void actionPerformed(ActionEvent e) {
+			// changement du booléen
+			editBool = !editBool;
+
+			// changement des affichage des fiels
+			prenomField.setEditable(editBool);
+			nomField.setEditable(editBool);
+			numNatelField.setEditable(editBool);
+			numProField.setEditable(editBool);
+			mailField.setEditable(editBool);
+
+			// affichage des boutons selon editable
+			save.setVisible(editBool);
+			delete.setVisible(editBool);
+
+			// ActionListener de changement de l'image de profil
+			if (editBool = true)
+				profilPic.addActionListener(new TraitementProfilPic());
+
+		}
 	}
 
 	public class TraitementCancel implements ActionListener {
@@ -273,5 +322,4 @@ public class FrameDispContact extends FramePrincipale {
 
 		}
 	}
-
 }

@@ -27,7 +27,7 @@ public class FrameImage extends FramePrincipale {
 	int hauteur = super.getHeight() - 189;
 
 	private JButton next = new JButton(new ImageIcon("./icon/next.png"));
-	private JButton cancel = new JButton(new ImageIcon("./icon/cancel.png"));
+	private JButton cancel = new JButton(new ImageIcon("./icon/cancelFill.png"));
 	private JButton back = new JButton(new ImageIcon("./icon/back.png"));
    
     

@@ -13,14 +13,14 @@ public class MainDemarrage {
 	public static void main(String[] args) {
 
 		// Animation de démarrage
-		try {
-			animInit = new FrameDemarrage();
-			Thread.sleep(2000);
-			animInit.dispose();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			animInit = new FrameDemarrage();
+//			Thread.sleep(2000);
+//			animInit.dispose();
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 		// Affichage du luncher
 		JFrame test = new FrameAccueil();
