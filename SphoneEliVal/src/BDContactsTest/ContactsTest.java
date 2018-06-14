@@ -15,7 +15,7 @@ class ContactsTest {
 	void testContacts() { //Methode ok
 		 Contacts c=new Contacts("Eli","Bitschnau","0781254565","0782540210","test@hevs.ch", null);
 		 
-		 //Lors de l'instantiation le contructeur test déjà que les paramètres soient en String, test implicite
+		 //Lors de l'instantiation le constructeur test déjà que les paramètres soient en String, test implicite
 		 // System.out.println("++++"+c);
 		 
 		 assertNotNull("L'objet n'existe pas",c);//si l'objet n'existe pas 
