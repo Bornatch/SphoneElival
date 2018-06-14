@@ -1,1 +1,1 @@
-typeSearchIndex = [{"p":"BDContacts","l":"Contacts"}]
+typeSearchIndex = [{"p":"gui","l":"FrameSettings"},{"p":"gui","l":"FrameSettings.TraitementCouleur"},{"p":"gui","l":"FrameSettings.TraitementCouleurMenu"},{"p":"gui","l":"FrameSettings.TraitementImageAccueil"},{"p":"gui","l":"FrameSettings.TraitementSettings"}]
