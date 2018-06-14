@@ -1,2 +1,2 @@
-java -Xms2048M -Xmx2048M -jar test.jar -o true 
+java -Xms1024M -Xmx1024M -jar EliValSPhone.jar -o true 
 PAUSE
