@@ -51,6 +51,7 @@ public class FrameDispContact extends FramePrincipale {
 
 	// Bouton d'image de profil
 	static JButton profilPic = new JButton(new ImageIcon("./icon/user.png"));
+	ActionListener action = new TraitementProfilPic();
 
 	// Bouton d'affichage des propriétés avec booleen gérant l'affichage des
 	// éléments de modification
@@ -144,10 +145,12 @@ public class FrameDispContact extends FramePrincipale {
 		profilPic.setContentAreaFilled(false);
 		profilPic.setBorderPainted(false);
 		profilPic.setBounds(21, 5, 150, 150);
+		
+		profilPic.addActionListener(action);
 
 		// gestion d'affichage selon editbool
 		panelCenter.add(edit);
-		edit.setBounds(245, 45,70, 70);
+		edit.setBounds(245, 45, 70, 70);
 		edit.setOpaque(true);
 		edit.setContentAreaFilled(false);
 		edit.setBorderPainted(false);
@@ -235,10 +238,14 @@ public class FrameDispContact extends FramePrincipale {
 			save.setVisible(editBool);
 			delete.setVisible(editBool);
 
-			// ActionListener de changement de l'image de profil
-			if (editBool = true)
-				profilPic.addActionListener(new TraitementProfilPic());
-
+//			// ActionListener de changement de l'image de profil
+//			if (editBool = true) {
+//				profilPic.addActionListener(action);
+//			}
+//			else {
+//				profilPic.removeActionListener(action);
+//			}
+//				
 		}
 	}
 

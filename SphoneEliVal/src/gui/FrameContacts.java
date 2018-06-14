@@ -104,7 +104,7 @@ public class FrameContacts extends FramePrincipale {
 		jList.setFixedCellHeight(45);
 		jList.setFont(liste);
 
-		// jList.setCellRenderer(new ContactListRenderer());h
+		// jList.setCellRenderer(new ContactListRenderer());
 		panelCenter.add(jList);
 
 		jList.addListSelectionListener(new TraitementList());
